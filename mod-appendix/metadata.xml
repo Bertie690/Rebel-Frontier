@@ -15,11 +15,11 @@
 		If there's no thread yet, create one to announce your upcoming mod in the
 		forum. Then paste the url here.
 	-->
-	<threadUrl><![CDATA[  ]]></threadUrl>
+	<threadUrl><![CDATA[ https://ftlmultiverse.boards.net/_______ ]]></threadUrl>
 
 
 	<!-- Your forum user name. -->
-	<author><![CDATA[  ]]></author>
+	<author><![CDATA[ IDK ]]></author>
 
 
 	<!--
@@ -30,12 +30,12 @@
 			2.4.1 Hi-res Bkgs
 			1.0 for FTL 1.03.1
 	-->
-	<version><![CDATA[ 0 ]]></version>
+	<version><![CDATA[ 0.1 ]]></version>
 
 
 	<description>
-<![CDATA[
-TODO
+<![CDATA[ 
+Add-on for Multiverse that adds a new sector and associated events.
 ]]>
 	</description>
 
