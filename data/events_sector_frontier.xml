@@ -1,74 +1,112 @@
 <FTL>
-	<event name="FRONTIER_DOGFIGHT" unique="true">
-		<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport appears to be in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
-		<choice hidden="true">
-			<text>Help the Duskbringers.</text>
-			<event>
-				<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
-				<ship load="FRONTIER_SHIP_DOGFIGHT_MV" hostile="true"/>
-				<choice hidden="true">
-					<text>Continue...</text>
-					<event load="COMBAT_CHECK"/>
-				</choice>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Help the MV Rebels.</text>
-			<event>
-				<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire on the Duskbringers to draw its attention, which retaliates by boarding you with several Devotees!</text>
-				<boarders min="2" max="3" class="zoltan_devotee"/>
-				<choice hidden="true">
-					<ship load="FRONTIER_SHIP_DOGFIGHT_DUSK" hostile="true"/>
-					<text>Continue...</text>
-					<event load="COMBAT_CHECK"/>
-				</choice>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Try to negotiate.</text>
-			<event load="FRONTIER_DOGFIGHT_NEGOTIATE">
-	</choice>
-		<choice hidden="true">
-			<text>Get out of here - this isn't your fight.</text>
-			<event>
-				<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation, so you steer far away from the conflict and find a nice quiet place to charge the FTL drive.</text>
-				<choice>
-					<text>Do something onboard the ship.</text>
-					<event load="STORAGE_CHECK"/>
-				</choice>
-				<choice>
-					<text>Do nothing.</text>
-				</event>
-		</choice>
-	</event>
-	</choice>
-	</event>
-
-	<ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
-		<destroyed>
-			<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
-			<autoReward level="MED">stabdard</autoReward>
-			<choice>
-				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
-			</choice>
-		</destroyed>
-		<deadCrew>
-			<text>The MV Rebel’s crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
-			<autoReward level="HIGH">standard</autoReward>
+<event name="FRONTIER_DOGFIGHT" unique="true">
+	<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport appears to be in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
+	<choice hidden="true">
+		<text>Help the Duskbringers.</text>
+		<event>
+			<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
+			<ship load="FRONTIER_SHIP_DOGFIGHT_MV" hostile="true"/>
 			<choice hidden="true">
-				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
 			</choice>
-		</deadCrew>
-	</ship>
-
-	<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
-		<text>The transport's captain hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I doubt we'd make it there without another one of those blue bastards ambushing us out of nowhere again. Here, have some supplies - we won't be needing them anumore."</text>
-		<autoreward level="LOW">MISSILES</autoreward>
-		<choice hidden="true">
-			<text>Accept their gift and wish them on their way.</text>
 		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Help the MV Rebels.</text>
+		<event>
+			<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
+			<boarders min="3" max="3" class="zoltan_devotee"/>
+			<choice hidden="true">
+				<ship load="FRONTIER_SHIP_DOGFIGHT_DUSK" hostile="true"/>
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Try to talk them into standing down.</text>
+		<event>
+			<text>You steer your ship into the middle of the conflict and send out a simple request to stop fighting. Both captains pause and glance at you for a moment before resuming the fight like nothing happened. So much for diplomacy...</text>
+			<choice hidden="true">
+				<text>Help the Duskbringers.</text>
+				<event>
+					<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
+					<ship load="FRONTIER_SHIP_DOGFIGHT_MV" hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Help the MV Rebels.</text>
+				<event>
+					<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
+					<ship load="FRONTIER_SHIP_DOGFIGHT_DUSK" hostile="true"/>
+					<boarders min="3" max="3" class="zoltan_devotee"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+			<choice>
+				<text>Leave before things get worse.</text>
+				<event>
+					<text>Given how poorly received your first attempt at negotiation was, you decide to head back before the ships decide to turn on you instead.</text>
+					<choice>
+						<text>Do something onboard the ship.</text>
+						<event load="STORAGE_CHECK"/>
+					</choice>
+					<choice>
+						<text>Do nothing.</text>
+						<event/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Stay uninvolved - this isn't your fight.</text>
+		<event>
+			<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation, so you steer far away from the conflict and find a nice quiet place to charge the FTL drive.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
+	<destroyed>
+		<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Check in with the Duskbringers.</text>
+			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The MV Rebel’s crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Check in with the Duskbringers.</text>
+			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+		</choice>
+	</deadCrew>
+</ship>
+
+<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
+	<text>The transport's captain hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I don't want anything to do with those bastards after this one ambushed us out of nowhere. Here, have some supplies - we won't be needing them anymore."</text>
+	<autoreward level="MED">missiles</autoreward>
+	<choice hidden="true">
+		<text>Accept their gift and wish them on their way.</text>
+		<event/>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_DUSK">
 		<text>(Duskbringer Crew) Ask to buy a weapon.</text>
@@ -84,41 +122,86 @@
 			<!-- In event we have more loot duskbringer weapons will need to add more choices here -->
 			<choice>
 				<text>Respectfully decline.</text>
-			</event>
-	</choice>
-	</event>
-	</choice>
-	</event>
-
-	<ship name="FRONTIER_SHIP_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
-		<destroyed>
-			<text>The Duskbringer transport explodes violently, whatever good the ship contained having surely been destroyed in the process. However, you manage to find a good amount of scrap and functional ammunition inside the wreckage.</text>
-			<autoReward level="MED">MISSILES</autoReward>
-			<choice>
-				<text>Check in with the MV Rebels.</text>
-				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+				<event/>
 			</choice>
-		</destroyed>
-		<deadCrew>
-			<text>The Duskbringer transport has been emptied of crew. Inside, you find a decent amount of loot and an Energy weapon, which you haul back to the ship in triumph.</text>
-			<autoReward level="MED">standard</autoReward>
-			<!-- IDK how to give a random energy weapon here-->
+		</event>
+	</choice>
+</event>
+
+<ship name="FRONTIER_SHIP_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
+	<destroyed>
+		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to find a good amount of scrap and functional ammunition inside the wreckage.</text>
+		<autoReward level="MED">missiles</autoReward>
+		<choice>
+			<text>Check in with the MV Rebels.</text>
+			<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Duskbringer transport has been emptied of crew. Inside, you find a decent amount of loot and an Energy weapon, which you haul back to the ship in triumph.</text>
+		<autoReward level="MED">scrap_only</autoReward>
+		<weapon name="LIST_WEAPONS_ENERGY"/>
+		<choice hidden="true">
+			<text>Check in with the Duskbringers.</text>
+			<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+		</choice>
+	</deadCrew>
+</ship>
+
+<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
+	<event>
+		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I guess I can feed the fleet false information for you as payback - better than spying on random transport ships I guess." The MV Rebel jumps away.</text>
+		<modifyPursuit amount="-2"/>
+		<choice>
+			<text>Continue...</text>
+			<event/>
+		</choice>
+	</event>
+	<event>
+		<text>The MV Rebel hails you, their captain's sunny disposition contrasting with the poor state of their ship's engines. "Thanks for the assist - those damn Duskbringers put up a pretty good fight for a 'supply vessel'. Now, I know we've got our differences and all, but I'm a diplomat, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
+		<autoReward level="MED">scrap_only</autoReward>
+		<choice>
+			<text>Continue...</text>
+			<event/>
+		</choice>
+	</event>
+	<event>
+		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you suspect your location might have been compromised, but at least you can salvage what little debris was left behind from the jump. 
+	<modifyPursuit amount="1"/>
+	<autoReward level="LOW">fuel</autoReward>
+		<choice>
+			<text>Continue...</text>
+			<event/>
+		</choice>
+	</event>
+</eventList>
+<!--
+<event name="FRONTIER_ELITE_INSULT">
+	<ship load"FRONTIER_SHIP_ELITE_INSULT" hostile="false"/>
+	<!-- is there a way to make an enemy start with a system disabled? Kinda want the elite to start with 0 shield bars initially before turning them on after 20 secs -->
+	<text>You arrive at the beacon to see a particularly well-armed Elite Rebel jump in shortly afterwards, their shields seemingly non-functional. You receive a hail from their captain, an MFK Ace, who proceeds to keel over laughing at the sight of your ship. "So THIS is the renegade Command's been sending ships every which way to find? HA! When I heard there was a renegade with a 50,000{ bounty on their head, I thought it was some sort of flagship or mega cruiser, not this little wimp! I don't even need my shields to beat you!" The Ace continues prattling on about your ship's relative incompetence and how their grandpa could suplex a train one arm only and so on and so forth, seemingly too engrossed in roasting you to bother fixing their shields. 
+	<choice hidden="true">
+		<text>Shut them up and begin combat.</text>
+		<event>
+			<text>The Rebel captain smirks at you precociously as you hear their weapons system starting to heat up. "Ah Renegades, predictable and greedy as always. Prepare to be crushed, squirt.</text>
+			<ship hostile="true"/>
+			<event load="COMBAT_CHECK"/>		
+	<choice hidden="true" req="____">
+	<!-- need list of pre-emptive weapons/preigniter)
+		<text>(Pre-emptive Item) Snipe the Elite while they're exposed.
+		<event>
+			<!-- I kinda want to trigger a magnetic payload-style effect in dealing direct system damage to the enemy's weapons. -->
+			<text>You interrupt the captain by firing your weapons directly into their weapons, creating a massive explosion that rocks their ship to the core. The MFK Ace's haughty disposition quickly fades away, replaced by one of shock and fear. "Alright alright, you've made your point - you're quick on the draw and all. Would a bit of scrap suffice to let us go?"</text>
+			<choice hidden="true">Accept their surrender.
+				<autoReward level="HIGH">scrap_only</autoReward>
+				</event>	
+			</choice>
 			<choice hidden="true">
-				<text>Check in with the Duskbringers.</text>
-				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+				<text>Ignore her and begin combat.</text>
+				<ship hostile="true"/>
+				<event load="COMBAT_CHECK"/>
 			</choice>
-		</deadCrew>
-	</ship>
-
-	<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
-		<event load="FRONTIER_DOGFIGHT_MV_CHECKIN_FLEET"/>
-		<event load="FRONTIER_DOGFIGHT_MV_CHECKIN_FLEET"/>
-		<event load="FRONTIER_DOGFIGHT_MV_CHECKIN_GOOD"/>
-		<event load="FRONTIER_DOGFIGHT_MV_CHECKIN_GOOD"/>
-		<event load="FRONTIER_DOGFIGHT_MV_CHECKIN_BAD"/>
-	</eventList>
-</FTL>
-<!--(40%) The Rebel captain hails you, "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I guess I can try and screw with the fleet for you as payback - better than spying on some random transport ship I guess." The MV Rebel jumps away. (2 Fleet Delay) 
-(40%) The Rebel captain hails you, "Thanks for the assist - those damn Duskbringers were delivering military supplies to the local Rebellion. Now, I know we've got our differences, but I'm a diplomat, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house." (Medium scrap-only reward) 
-(20%) The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you suspect that your location may have been revealed to the fleet, but at least you can salvage what little scrap was left behind from the jump. (1 Fleet double, low scrap-only reward)-->
-
+		</event>
+	</choice>
+</event>
+-->
