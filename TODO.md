@@ -1,7 +1,8 @@
 This is just a list of all event ideas and such that will being included in the mod (including finished ones for reference)
 
+*Italics = WIP*
+~~Strikethrough = finished~~
 Event list:
-
 ### Stores
 
 * DISTRESS - Local Rebel merchant being harassed by an MV Rebel ship. Fight for access to a shop.
@@ -12,7 +13,7 @@ Event list:
 
 * Rebel recruitment center
 * Jerry Fan Club
-* Insulting Elite
+* *Insulting Elite* 
 * Leah mirror match slap fight (basically empty beacon)
 
 ### Medium Events
@@ -20,7 +21,7 @@ Event list:
 * Disillusioned veteran 
 * Engineer, MV, and Elite Rebel ships arguing
 * MFK Ace recruitment center
-* Duskbringer transport fighting with MV Rebel
+* ~~Duskbringer transport fighting with MV Rebel~~ DONE 
 * DISTRESS - Engineer dealing with propaganda satellite
 
 ### Major Events/Quests
