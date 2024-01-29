@@ -1,8 +1,11 @@
 This is just a list of all event ideas and such that will being included in the mod (including finished ones for reference)
 
 *Italics = WIP*
+
 ~~Strikethrough = finished~~
+
 Event list:
+
 ### Stores
 
 * DISTRESS - Local Rebel merchant being harassed by an MV Rebel ship. Fight for access to a shop.
