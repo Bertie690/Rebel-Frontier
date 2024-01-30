@@ -1,5 +1,5 @@
 <FTL>
-<event name="FRONTIER_DOGFIGHT" unique="true">
+<event name="FRONTIER_DOGFIGHT">
 	<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport appears to be in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
 	<choice hidden="true">
 		<text>Help the Duskbringers.</text>
@@ -91,7 +91,7 @@
 			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
 		</choice>
 	</destroyed>
-	<deadCrew>
+		<deadCrew>
 		<text>The MV Rebel’s crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
@@ -100,7 +100,6 @@
 		</choice>
 	</deadCrew>
 </ship>
-
 <event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
 	<text>The transport's captain hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I don't want anything to do with those bastards after this one ambushed us out of nowhere. Here, have some supplies - we won't be needing them anymore."</text>
 	<autoreward level="MED">missiles</autoreward>
@@ -110,14 +109,14 @@
 	</choice>
 	<choice hidden="true" req="LIST_CREW_DUSK">
 		<text>(Duskbringer Crew) Ask to buy a weapon.</text>
-		<event>
+		<event>	
 			<text>The captain mulls it over for a while before eventually agreeing to trade with you. "I suppose it's fine for you to buy a weapon, given that we're heading straight back to the Capitol after this."</text>
 			<choice>
 				<text>Buy a Loot Heavy Energy.</text>
 				<item_modify>
 					<item type="scrap" min="70" max="-60"/>
 				</item_modify>
-				<weapon name="LOOT_DUSKBRINGER_1">
+				<weapon name="LOOT_DUSKBRINGER_1"/>
 			</choice>
 			<!-- In event we have more loot duskbringer weapons will need to add more choices here -->
 			<choice>
@@ -127,7 +126,6 @@
 		</event>
 	</choice>
 </event>
-
 <ship name="FRONTIER_SHIP_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
 	<destroyed>
 		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to find a good amount of scrap and functional ammunition inside the wreckage.</text>
@@ -147,10 +145,9 @@
 		</choice>
 	</deadCrew>
 </ship>
-
 <eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
 	<event>
-		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I guess I can feed the fleet false information for you as payback - better than spying on random transport ships I guess." The MV Rebel jumps away.</text>
+		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I guess I can screw with the fleet for you as payback - better than spying on some random transport ship I guess." The MV Rebel jumps away.</text>
 		<modifyPursuit amount="-2"/>
 		<choice>
 			<text>Continue...</text>
@@ -166,12 +163,13 @@
 		</choice>
 	</event>
 	<event>
-		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you suspect your location might have been compromised, but at least you can salvage what little debris was left behind from the jump. 
-	<modifyPursuit amount="1"/>
-	<autoReward level="LOW">fuel</autoReward>
+		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you suspect your location might have been compromised, but at least you can salvage what little debris was left behind from the jump.</text>
+		<modifyPursuit amount="1"/>
+		<autoReward level="LOW">fuel</autoReward>
 		<choice>
 			<text>Continue...</text>
 			<event/>
 		</choice>
 	</event>
 </eventList>
+</FTL>
