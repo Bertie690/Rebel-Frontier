@@ -175,33 +175,3 @@
 		</choice>
 	</event>
 </eventList>
-<!--
-<event name="FRONTIER_ELITE_INSULT">
-	<ship load"FRONTIER_SHIP_ELITE_INSULT" hostile="false"/>
-	<!-- is there a way to make an enemy start with a system disabled? Kinda want the elite to start with 0 shield bars initially before turning them on after 20 secs -->
-	<text>You arrive at the beacon to see a particularly well-armed Elite Rebel jump in shortly afterwards, their shields seemingly non-functional. You receive a hail from their captain, an MFK Ace, who proceeds to keel over laughing at the sight of your ship. "So THIS is the renegade Command's been sending ships every which way to find? HA! When I heard there was a renegade with a 50,000{ bounty on their head, I thought it was some sort of flagship or mega cruiser, not this little wimp! I don't even need my shields to beat you!" The Ace continues prattling on about your ship's relative incompetence and how their grandpa could suplex a train one arm only and so on and so forth, seemingly too engrossed in roasting you to bother fixing their shields. 
-	<choice hidden="true">
-		<text>Shut them up and begin combat.</text>
-		<event>
-			<text>The Rebel captain smirks at you precociously as you hear their weapons system starting to heat up. "Ah Renegades, predictable and greedy as always. Prepare to be crushed, squirt.</text>
-			<ship hostile="true"/>
-			<event load="COMBAT_CHECK"/>		
-	<choice hidden="true" req="____">
-	<!-- need list of pre-emptive weapons/preigniter)
-		<text>(Pre-emptive Item) Snipe the Elite while they're exposed.
-		<event>
-			<!-- I kinda want to trigger a magnetic payload-style effect in dealing direct system damage to the enemy's weapons. -->
-			<text>You interrupt the captain by firing your weapons directly into their weapons, creating a massive explosion that rocks their ship to the core. The MFK Ace's haughty disposition quickly fades away, replaced by one of shock and fear. "Alright alright, you've made your point - you're quick on the draw and all. Would a bit of scrap suffice to let us go?"</text>
-			<choice hidden="true">Accept their surrender.
-				<autoReward level="HIGH">scrap_only</autoReward>
-				</event>	
-			</choice>
-			<choice hidden="true">
-				<text>Ignore her and begin combat.</text>
-				<ship hostile="true"/>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-</event>
--->
