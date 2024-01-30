@@ -1,1 +1,3 @@
-<eventFile>sector_frontier</eventFile>
+<mod:findLike type="events">
+    <mod-append:eventFile>sector_frontier</mod-append:eventFile>
+</mod:findLike>
