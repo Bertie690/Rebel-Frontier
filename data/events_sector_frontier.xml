@@ -1,6 +1,6 @@
 <FTL>
 <event name="FRONTIER_DOGFIGHT">
-	<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport appears to be in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
+	<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport is engaged in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
 	<choice hidden="true">
 		<text>Help the Duskbringers.</text>
 		<event>
@@ -27,7 +27,7 @@
 	<choice hidden="true">
 		<text>Try to talk them into standing down.</text>
 		<event>
-			<text>You steer your ship into the middle of the conflict and send out a simple request to stop fighting. Both captains pause and glance at you for a moment before resuming the fight like nothing happened. So much for diplomacy...</text>
+			<text>You steer your ship into the middle of the conflict and broadcast a simple request to stop fighting. Both captains pause and stare at you for a moment before resuming like nothing happened. Looks like diplomacy isn't an option...</text>
 			<choice hidden="true">
 				<text>Help the Duskbringers.</text>
 				<event>
@@ -54,7 +54,7 @@
 			<choice>
 				<text>Leave before things get worse.</text>
 				<event>
-					<text>Given how poorly received your first attempt at negotiation was, you decide to head back before the ships decide to turn on you instead.</text>
+					<text>Given how poorly received your first attempt at negotiation was, you decide to head back before either ship decides to turn on you instead.</text>
 					<choice>
 						<text>Do something onboard the ship.</text>
 						<event load="STORAGE_CHECK"/>
@@ -147,7 +147,7 @@
 </ship>
 <eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
 	<event>
-		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I guess I can screw with the fleet for you as payback - better than spying on some random transport ship I guess." The MV Rebel jumps away.</text>
+		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I suppose I can feed the fleet false information as payback - beats spying on some random transport ship I guess." The MV Rebel jumps away.</text>
 		<modifyPursuit amount="-2"/>
 		<choice>
 			<text>Continue...</text>
@@ -163,7 +163,7 @@
 		</choice>
 	</event>
 	<event>
-		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you suspect your location might have been compromised, but at least you can salvage what little debris was left behind from the jump.</text>
+		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you realize your location might have been compromised, but at least you can salvage what little debris was left behind from the jump.</text>
 		<modifyPursuit amount="1"/>
 		<autoReward level="LOW">fuel</autoReward>
 		<choice>
