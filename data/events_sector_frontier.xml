@@ -5,7 +5,7 @@
 		<text>Help the Duskbringers.</text>
 		<event>
 			<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
-			<ship load="FRONTIER_SHIP_DOGFIGHT_MV" hostile="true"/>
+			<ship load="SHIP_FRONTIER_DOGFIGHT_MV" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -18,7 +18,7 @@
 			<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
 			<boarders min="3" max="3" class="zoltan_devotee"/>
 			<choice hidden="true">
-				<ship load="FRONTIER_SHIP_DOGFIGHT_DUSK" hostile="true"/>
+				<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
 			</choice>
@@ -27,12 +27,12 @@
 	<choice hidden="true">
 		<text>Try to talk them into standing down.</text>
 		<event>
-			<text>You steer your ship into the middle of the conflict and broadcast a simple request to stop fighting. Both captains pause and stare at you for a moment before resuming like nothing happened. Looks like diplomacy isn't an option...</text>
+			<text>You steer your ship into the middle of the conflict and broadcast a simple request to stop fighting. Both captains pause and stare at you for a moment before resuming like nothing happened. Looks like diplomacy won't be an option here...</text>
 			<choice hidden="true">
 				<text>Help the Duskbringers.</text>
 				<event>
 					<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
-					<ship load="FRONTIER_SHIP_DOGFIGHT_MV" hostile="true"/>
+					<ship load="SHIP_FRONTIER_DOGFIGHT_MV" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="COMBAT_CHECK"/>
@@ -43,7 +43,7 @@
 				<text>Help the MV Rebels.</text>
 				<event>
 					<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
-					<ship load="FRONTIER_SHIP_DOGFIGHT_DUSK" hostile="true"/>
+					<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
 					<boarders min="3" max="3" class="zoltan_devotee"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -126,9 +126,9 @@
 		</event>
 	</choice>
 </event>
-<ship name="FRONTIER_SHIP_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
+<ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
 	<destroyed>
-		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to find a good amount of scrap and functional ammunition inside the wreckage.</text>
+		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
 		<autoReward level="MED">missiles</autoReward>
 		<choice>
 			<text>Check in with the MV Rebels.</text>
@@ -136,7 +136,7 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The Duskbringer transport has been emptied of crew. Inside, you find a decent amount of loot and an Energy weapon, which you haul back to the ship in triumph.</text>
+		<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
 		<autoReward level="MED">scrap_only</autoReward>
 		<weapon name="LIST_WEAPONS_ENERGY"/>
 		<choice hidden="true">
