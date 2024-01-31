@@ -91,8 +91,8 @@
 			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
 		</choice>
 	</destroyed>
-		<deadCrew>
-		<text>The MV Rebel’s crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
+	<deadCrew>
+		<text>The MV Rebel's crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Check in with the Duskbringers.</text>
@@ -130,7 +130,7 @@
 	<destroyed>
 		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
 		<autoReward level="MED">missiles</autoReward>
-		<choice>
+		<choice hidden="true">
 			<text>Check in with the MV Rebels.</text>
 			<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
 		</choice>
