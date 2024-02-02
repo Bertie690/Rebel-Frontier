@@ -107,7 +107,7 @@
 		<text>Accept their gift and wish them on their way.</text>
 		<event/>
 	</choice>
-	<choice hidden="true" req="LIST_CREW_DUSK">
+	<choice hidden="true" req="LIST_CREW_DUSK" blue="true">
 		<text>(Duskbringer Crew) Ask to buy a weapon.</text>
 		<event>	
 			<text>The captain mulls it over for a while before eventually agreeing to trade with you. "I suppose it's fine for you to buy a weapon, given that we're heading straight back to the Capitol after this."</text>
@@ -117,6 +117,7 @@
 					<item type="scrap" min="-45" max="-55"/>
 				</item_modify>
 				<weapon name="GIFTLIST_ENERGY"/>
+				<event/>
 			</choice>
 			<choice>
 				<text>Buy a Loot Weapon.</text>
@@ -124,7 +125,9 @@
 					<item type="scrap" min="-55" max="-65"/>
 				</item_modify>
 				<weapon name="LIST_LOOT_DUSKBRINGER"/>
+				<event/>
 			</choice>
+			<choice>
 				<text>Respectfully decline.</text>
 				<event/>
 			</choice>
