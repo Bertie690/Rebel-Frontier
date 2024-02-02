@@ -102,7 +102,7 @@
 </ship>
 <event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
 	<text>The transport's captain hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I don't want anything to do with those bastards after this one ambushed us out of nowhere. Here, have some supplies - we won't be needing them anymore."</text>
-	<autoreward level="MED">missiles</autoreward>
+	<autoReward level="MED">missiles</autoReward>
 	<choice hidden="true">
 		<text>Accept their gift and wish them on their way.</text>
 		<event/>
