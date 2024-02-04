@@ -180,4 +180,110 @@
 		</choice>
 	</event>
 </eventList>
+
+<event name="FRONTIER_ELITE_INSULT">
+	<ship load"SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
+	<text>You arrive at the beacon to see a particularly well-armed Elite Rebel jump in shortly afterwards and attempt to hail you. Surprised, you accept and are met with a young Rebel clad in MFK Ace armor, who proceeds to keel over laughing at the sight of your ship. "So THIS is the Renegade command's been sending ships everywhere to find? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting some sort of flagship or mega cruiser, not this tiny little thing! My grandmother could run faster than those engines!" The Ace continues on this tirade for several minutes straight, alternately dunking on you and your crewmates and going on long rants about everything from life back home to their favorite pasta dishes.</text> 
+	<choice hidden="true" req="____" blue="true">
+	<!-- need list of preigniting augments)-->
+		<text>(Weapon Pre-igniter) Snipe them while they're exposed.
+		<event>
+			<text>Without missing a beat, you fire your salvo of weapons directly into the Elite's shields, creating a massive explosion that sends a good chunk of their ship flying into space. The captain hastily apologizes and ejects a weapon out the airlock as 
+surrender before attempting to get as far away from your ship as physically possible."</text>
+			<autoReward level="HIGH">standard_no_item</autoReward>
+			<weapon name="LIST_WEAPONS_REBEL"/>
+			<event/>
+		</event>
+	</choice>
+	<choice hidden="true" req="____" blue="true">
+	<!-- need list of pre-emptive augments)-->
+		<text>(Pre-Emptive Weapon) Snipe them while they're exposed.
+		<event>
+			<text>You fire your pre-emptive weapon directly into the Elite's weapons system, crippling it and lighting it ablaze. The captain's haughty disposition quickly fades away as they realize your ship is a force to be reckoned with. "Alright alright, you've amde your point already! Would a weapon suffice to leave us alone?"</text>
+			<choice>
+				<text>Accept their surrender.</text>
+				<autoReward level="MED">scrap_only</autoReward>
+				<weapon name="LIST_WEAPONS_REBEL">
+				<event/>
+			</choice>
+			<choice hidden="true">
+				<text>Nah, we'll just murder you anyways.</text>
+				<event>
+					<text>The captain steels their resolve and prepares to face you in combat.</text>
+					<ship hostile="true"/>
+					<event load="COMBAT_CHECK"/>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="_____" blue="true">
+	<!-- need blue option for weapons lvl 6+-->
+		<text>(Lvl 6 Weapons) Show the Elite you mean business.</text>
+		<event>
+			<text>You fire your entire salvo of weaponry at the Rebel vessel, narrowly missing it and vaporizing a nearby asteroid instead. The captain looks impressed, despite their best efforts to hide it. "Heh, nice laser light show you got over there. Listen - maybe we don't have to fight after all? It's not like I'm scared or anything - I just don't want to ruin the paint job."</text>
+			<choice>
+				<text>Accept the offer.</text>
+				<autoReward level="HIGH">standard_no_item</autoReward>
+				<event/>
+			</choice>
+			<choice hidden="true">
+				<text>Nah, we'll just murder you anyways.</text>
+				<event>
+					<text>"Oh well. There goes the fresh coat of varnish..."</text>
+					<ship hostile="true"/>
+					<event load="COMBAT_CHECK"/>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="LIST_SHIPS_REBEL_ELITE_FIGHT">
+	<surrender chance="0" min="3" max="3" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
+	<destroyed>
+		<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
+		<autoReward level="MED">standard_no_item</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event>
+				<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+				<weapon name="GIFTLIST_REBEL"/>
+			</event>
+			<event>
+				<text>Unfortunately, it appears the Elite Rebel's cargo did not survive the fight. At least the wreckage makes for good scrap.</text>
+				<autoReward level="MED">scrap_only</autoReward>
+			</event>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Elite's crew have been slain, leaving much loot and even an intact weapon for the taking. While scrapping the ship, you spot the ship's captain slumped over in a corner, motioning for you to come closer. "Heh, guess you aren't no squirt after all. You're pretty powerful for a ship your size, you hear that? Might even stand a chance against the flagship..."</text>
+		<autoReward level="HIGH">standard_no_item</autoReward>
+		<weapon name="GIFTLIST_REBEL"/>
+		<choice hidden="true" req="____">
+		<!-- need ID for medbay lvl 1 -->
+			<text>Offer to try and help.</text>
+			<event>
+				<text>The Ace grunts in pain. "Don't bother - by the time you get back there I'll be long gone. Besides, it's not as if I have anything left for me at this point..." You watch the last vestiges of life depart from the Ace's eyes, leaving the ship a lifeless wreck.</text>
+			</event>
+		</choice>
+		<choice hidden="true" req="LIST_CREW_MEDICAL">
+			<text>(Medical Crew) Administer first aid.
+		</choice>
+	</deadCrew>
+</ship>
+
+<event name="SURRENDER_FRONTIER_ELITE_INSULT">
+	<text>You recieve a hail from the Elite's captain, having clearly undererestimated your shsip's strength. "Alright alright, you've amde your point already! Just take this weapon and leave us alone!"<text>
+	<choice>
+		<text>Accept their surrender.</text>
+		<weapon name="GIFTLIST_REBEL"/>
+		<ship hostile="false"/>
+	</choice>
+	<choice hidden="true">
+		<text>Ignore them and continue fighting.</text>
+		<event/>
+	</choice>
+</event>
+
+
 </FTL>
