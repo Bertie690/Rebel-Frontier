@@ -1,3 +1,20 @@
-<mod:findLike type="events">
-    <mod-append:eventFile>sector_frontier</mod-append:eventFile>
+<FTL>
+    <mod:findLike type="events">
+       <mod-append:eventFile>sector_frontier</mod-append:eventFile>
+    </mod:findLike>
+    <mod:findLike type="ship">
+        <mod-append:customShip name="MU_REBEL_ELITE_INSULT">
+        <shipIcons>
+            <shipIcon>icon_threat</shipIcon>
+        </shipIcons>
+        <crew>
+            <human_mfk room="0" name="Preston"/>
+            <human_soldier room="2"/>
+            <human_soldier room="3"/>
+            <human_soldier room="4"/>
+            <human_engineer room="5"/>
+            <human_medic room="6"/>
+        </crew>
+    </mod-append:customShip>
 </mod:findLike>
+</FTL>
