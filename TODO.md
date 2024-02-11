@@ -16,7 +16,7 @@ Event list:
 
 * Rebel recruitment center
 * Jerry Fan Club
-* *Insulting Elite* 
+* ~~Insulting Elite~~ DONE
 * Leah mirror match slap fight (basically empty beacon)
 
 ### Medium Events

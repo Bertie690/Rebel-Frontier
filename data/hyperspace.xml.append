@@ -8,7 +8,7 @@
             <shipIcon>icon_threat</shipIcon>
         </shipIcons>
         <crew>
-            <human_mfk room="0" name="Preston"/>
+            <human_soldier room="0" name="Matt"/>
             <human_soldier room="2"/>
             <human_soldier room="3"/>
             <human_soldier room="4"/>
