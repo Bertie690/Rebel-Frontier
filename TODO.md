@@ -23,8 +23,8 @@ Event list:
 ### Medium Events
 
 * Disillusioned veteran 
-* Engineer, MV, and Elite Rebel ships arguing
-* MFK Ace recruitment center
+* *Engineer, MV, and Elite Rebel ships arguing* WIP
+* MFK Ace recruitment center 
 * DISTRESS - Engineer dealing with propaganda satellite
 
 ### Major Events/Quests
