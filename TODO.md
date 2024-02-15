@@ -16,15 +16,15 @@ Event list:
 
 * Rebel recruitment center
 * Jerry Fan Club
-* *Insulting Elite* 
+* ~~Insulting Elite~~ DONE
+* ~~Duskbringer transport fighting with MV Rebel~~ DONE 
 * Leah mirror match slap fight (basically empty beacon)
 
 ### Medium Events
 
 * Disillusioned veteran 
-* Engineer, MV, and Elite Rebel ships arguing
-* MFK Ace recruitment center
-* ~~Duskbringer transport fighting with MV Rebel~~ DONE 
+* *Engineer, MV, and Elite Rebel ships arguing* WIP
+* MFK Ace recruitment center 
 * DISTRESS - Engineer dealing with propaganda satellite
 
 ### Major Events/Quests
@@ -33,3 +33,7 @@ Event list:
 * Abandoned Obelisk ship excavation site
 * DISTRESS - Space station held hostage by disgruntled MFK Ace
 * Rebellion Node 17 Memorial
+
+### Other 
+
+* Guard

@@ -1,183 +1,421 @@
 <FTL>
-<event name="FRONTIER_DOGFIGHT">
-	<text>You arrive at the beacon to the sound of laser fire and explosions in the distance. A Duskbringer transport is engaged in a dogfight with a MV Rebel some distance away, both sides too engrossed in the conflict to notice your arrival. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'll get from the other if you succeed.</text>
-	<choice hidden="true">
-		<text>Help the Duskbringers.</text>
-		<event>
-			<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
-			<ship load="SHIP_FRONTIER_DOGFIGHT_MV" hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice hidden="true">
-		<text>Help the MV Rebels.</text>
-		<event>
-			<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
-			<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
-			<boarders min="3" max="3" class="zoltan_devotee"/>
-			<choice hidden="true">	
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice hidden="true">
-		<text>Try to talk them into standing down.</text>
-		<event>
-			<text>You steer your ship into the middle of the conflict and broadcast a simple request to stop fighting. Both captains pause and stare at you for a moment before resuming like nothing happened. Looks like diplomacy won't be an option here...</text>
-			<choice hidden="true">
-				<text>Help the Duskbringers.</text>
-				<event>
-					<text>Duskbringers may be extremists, but at least they're better than Rebels. You draw the MV Rebel's attention and prepare to engage with it.</text>
-					<ship load="SHIP_FRONTIER_DOGFIGHT_MV" hostile="true"/>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event load="COMBAT_CHECK"/>
-					</choice>
-				</event>
-			</choice>
-			<choice hidden="true">
-				<text>Help the MV Rebels.</text>
-				<event>
-					<text>The Rebels may be your enemies, but they surely can't be all bad, right? You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
-					<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
-					<boarders min="3" max="3" class="zoltan_devotee"/>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event load="COMBAT_CHECK"/>
-					</choice>
-				</event>
-			</choice>
-			<choice>
-				<text>Leave before things get worse.</text>
-				<event>
-					<text>Given how poorly received your first attempt at negotiation was, you decide to head back before either ship decides to turn on you instead.</text>
-					<choice>
-						<text>Do something onboard the ship.</text>
-						<event load="STORAGE_CHECK"/>
-					</choice>
-					<choice>
-						<text>Do nothing.</text>
-						<event/>
-					</choice>
-				</event>
-			</choice>
-		</event>
-	</choice>
-	<choice hidden="true">
-		<text>Stay uninvolved - this isn't your fight.</text>
-		<event>
-			<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation, so you steer far away from the conflict and find a nice quiet place to charge the FTL drive.</text>
-			<choice>
-				<text>Do something onboard the ship.</text>
-				<event load="STORAGE_CHECK"/>
-			</choice>
-			<choice>
-				<text>Do nothing.</text>
-				<event/>
-			</choice>
-		</event>
-	</choice>
-</event>
-<ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
-	<destroyed>
-		<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
-		<autoReward level="MED">standard</autoReward>
+	<event name="FRONTIER_DOGFIGHT">
+		<text>You arrive at the beacon to find a Duskbringer transport sparring with an MV Rebel some distance away. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'd receive from the other ship afterwards.</text>
 		<choice hidden="true">
-			<text>Check in with the Duskbringers.</text>
-			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+			<text>Help the Duskbringers.</text>
+			<event>
+				<text>You draw the MV Rebel's attention and prepare to engage with it.</text>
+				<ship load="SHIP_FRONTIER_DOGFIGHT_MV" hostile="true"/>
+				<choice hidden="true">
+					<text>Continue...</text>
+					<event load="COMBAT_CHECK"/>
+				</choice>
+			</event>
 		</choice>
-	</destroyed>
-	<deadCrew>
-		<text>The MV Rebel's crew has been neutralized, leaving its ship a lifeless wreck. You collect all that you can find.</text>
-		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
-			<text>Check in with the Duskbringers.</text>
-			<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+			<text>Help the MV Rebels.</text>
+			<event>
+				<text>You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
+				<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
+				<boarders min="3" max="3" class="zoltan_devotee"/>
+				<choice hidden="true">	
+					<text>Continue...</text>
+					<event load="COMBAT_CHECK"/>
+				</choice>
+			</event>
 		</choice>
-	</deadCrew>
-</ship>
-<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
-	<text>The transport's captain hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I don't want anything to do with those bastards after this one ambushed us out of nowhere. Here, have some supplies - we won't be needing them anymore."</text>
-	<autoReward level="MED">missiles</autoReward>
-	<choice hidden="true">
-		<text>Accept their gift and wish them on their way.</text>
-		<event/>
-	</choice>
-	<choice hidden="true" req="LIST_CREW_DUSK" blue="true">
-		<text>(Duskbringer Crew) Ask to buy a weapon.</text>
-		<event>	
-			<text>The captain mulls it over for a while before eventually agreeing to trade with you. "I suppose it's fine for you to buy a weapon, given that we're heading straight back to the Capitol after this."</text>
-			<choice>
-				<text>Buy a normal Energy weapon.</text>
-				<item_modify>
-					<item type="scrap" min="-45" max="-55"/>
-				</item_modify>
-				<weapon name="GIFTLIST_ENERGY"/>
-				<event/>
+		<choice hidden="true">
+			<text>Stay uninvolved - this isn't your fight.</text>
+			<event>
+				<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation, so you steer far away from the conflict and find a nice quiet place to charge the FTL drive.</text>
+				<choice>
+					<text>Do something onboard the ship.</text>
+					<event load="STORAGE_CHECK"/>
+				</choice>
+				<choice>
+					<text>Do nothing.</text>
+					<event/>
+				</choice>
+			</event>
+		</choice>
+	</event>
+	
+	<ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
+		<destroyed>
+			<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Check in with the Duskbringers.</text>
+				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
 			</choice>
-			<choice>
-				<text>Buy a Loot Weapon.</text>
-				<item_modify>
-					<item type="scrap" min="-55" max="-65"/>
-				</item_modify>
-				<weapon name="LIST_LOOT_DUSKBRINGER"/>
-				<event/>
+		</destroyed>
+		<deadCrew>
+			<text>The MV Rebel's crew has been neutralized, leaving their ship a lifeless wreck. You collect all that you can find.</text>
+			<autoReward level="HIGH">standard</autoReward>
+			<choice hidden="true">
+				<text>Check in with the Duskbringers.</text>
+				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
 			</choice>
-			<choice>
-				<text>Respectfully decline.</text>
-				<event/>
-			</choice>
-		</event>
-	</choice>
-</event>
-<ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
-	<destroyed>
-		<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
+		</deadCrew>
+	</ship>
+	<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
+		<text>The Duskbringer transport hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I highly doubt we'd make it there alive given the poor reception. Here, have some supplies - we won't be needing them anymore."</text>
 		<autoReward level="MED">missiles</autoReward>
 		<choice hidden="true">
-			<text>Check in with the MV Rebels.</text>
-			<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			<text>Accept their gift and wish them on their way.</text>
+			<event/>
 		</choice>
-	</destroyed>
-	<deadCrew>
-		<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
-		<autoReward level="MED">scrap_only</autoReward>
-		<weapon name="LIST_WEAPONS_ENERGY"/>
+		<choice hidden="true" req="LIST_CREW_DUSK" blue="true">
+			<text>(Duskbringer Crew) Ask to buy a weapon.</text>
+			<event>	
+				<text>The captain mulls it over for a while before eventually agreeing to trade with you. "I suppose it's fine for you to buy a weapon, given that we're heading straight back to the Capitol after this."</text>
+				<choice>
+					<text>Buy a normal Energy weapon.</text>
+					<item_modify>
+						<item type="scrap" min="-45" max="-55"/>
+					</item_modify>
+					<weapon name="GIFTLIST_ENERGY"/>
+					<event/>
+				</choice>
+				<choice>
+					<text>Buy a Loot Weapon.</text>
+					<item_modify>
+						<item type="scrap" min="-55" max="-65"/>
+					</item_modify>
+					<weapon name="LIST_LOOT_DUSKBRINGER"/>
+					<event/>
+				</choice>
+				<choice>
+					<text>Respectfully decline.</text>
+					<event/>
+				</choice>
+			</event>
+		</choice>
+	</event>
+	<ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
+		<destroyed>
+			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
+			<autoReward level="MED">missiles</autoReward>
+			<choice hidden="true">
+				<text>Check in with the MV Rebels.</text>
+				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			</choice>
+		</destroyed>
+		<deadCrew>
+			<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
+			<autoReward level="MED">scrap_only</autoReward>
+			<weapon name="GIFTLIST_ENERGY"/>
+			<choice hidden="true">
+				<text>Check in with the Duskbringers.</text>
+				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			</choice>
+		</deadCrew>
+	</ship>
+	<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
+		<event>
+			<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I suppose I can feed the fleet false information as payback - beats doing border patrol I guess." The MV Rebel jumps away.</text>
+			<modifyPursuit amount="-2"/>
+			<choice>
+				<text>Continue...</text>
+				<event/>
+			</choice>
+		</event>
+		<event>
+			<text>The MV Rebel hails you, their captain's sunny disposition contrasting with the poor state of their ship's engines. "Thanks for the assist - those Duskbringers didn't know the meaning of 'import tax'. Now, I know we've got our differences and all, but I'm a businessman, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
+			<autoReward level="MED">scrap_only</autoReward>
+			<choice>
+				<text>Continue...</text>
+				<event/>
+			</choice>
+		</event>
+		<event>
+			<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you realize your location has likely been compromised, but at least you can salvage some debris left behind from the jump.</text>
+			<modifyPursuit amount="1"/>
+			<autoReward level="LOW">fuel</autoReward>
+			<choice>
+				<text>Continue...</text>
+				<event/>
+			</choice>
+		</event>
+	</eventList>
+	
+	<event name="FRONTIER_ELITE_INSULT" unique="true">
+		<ship load="SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
+		<text>You arrive at the beacon to see a particularly well-armed Elite Rebel jump in and attempt to hail you. Surprised, you accept and are met with a young Rebel clad in heavy-duty armor, who keels over laughing at the sight of your ship. "So THIS is the Renegade Command's been sending ships everywhere to find? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something big, not this tiny little thing!".</text> 
 		<choice hidden="true">
-			<text>Check in with the Duskbringers.</text>
-			<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			<text>How dare you! Man the guns.</text>
+			<event>
+				<text>The Rebel captain smirks at you, their weapons system coming to life with an audible hum. "Ah Renegades, foolhardy as always. Prepare to be crushed, squirt."</text>
+				<ship hostile="true"/>
+				<event load="COMBAT_CHECK"/>
+			</event>
 		</choice>
-	</deadCrew>
-</ship>
-<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
-	<event>
-		<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I suppose I can feed the fleet false information as payback - beats spying on some random transport ship I guess." The MV Rebel jumps away.</text>
-		<modifyPursuit amount="-2"/>
+		<choice hidden="true" req="WEAPON_PREIGNITE" blue="true">
+			<!---  preigniting augments)-->
+			<text>(Weapon Pre-igniter) Blast them into nonexistence.</text>
+			<event>
+				<text>Without missing a beat, you fire a salvo directly into the Elite's shields, creating a massive explosion and sending their crew into chaos. The captain hastily apologizes and ejects a weapon out the airlock as surrender before running as far away from your ship as physically possible."</text>
+				<autoReward level="HIGH">standard_no_item</autoReward>
+				<weapon name="LIST_WEAPONS_REBEL"/>
+				<instantEscape/>
+				<event/>
+			</event>
+		</choice>
+		<choice hidden="true" req="BLUELIST_INSTANT_DAMAGE" blue="true">
+			<!--- list of damaging pre-emptive weapons)-->
+			<text>(Damaging Pre-Emptive Weapon) Snipe them while they're exposed.</text>
+			<event>
+				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, ripping a hole into it. The captain's haughty disposition quickly fades away as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
+				<enemyDamage amount="3" system="weapons" effect="breach" force="true" damageHull="true"/>
+				<choice>
+					<text>Accept their surrender.</text>
+					<autoReward level="MED">scrap_only</autoReward>
+					<weapon name="LIST_WEAPONS_REBEL"/>
+					<event/>
+				</choice>
+				<choice hidden="true">
+					<text>Nah, we'll just murder you anyways.</text>
+					<event>
+						<text>The captain steels their resolve and prepares to face you in combat.</text>
+						<ship hostile="true"/>
+						<choice hidden="true">
+							<text>Continue...</text>
+							<event load="COMBAT_CHECK"/>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true" req="BLUELIST_INSTANT_NODAMAGE" blue="true">
+			<!--- list of pre-emptive weapons)-->
+			<text>(Non-Damaging Pre-Emptive Weapon) Cripple them while they're exposed.</text>
+			<event>
+				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, crippling it and lighting it ablaze. The captain's haughty disposition quickly fades away as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
+				<status type="loss" target="player" amount="1" system="weapons"/>
+				<enemyDamage amount="0" system="weapons" effect="fire"/>			
+				<choice>
+					<text>Accept their surrender.</text>
+					<autoReward level="MED">scrap_only</autoReward>
+					<weapon name="LIST_WEAPONS_REBEL"/>
+					<event/>
+				</choice>
+				<choice hidden="true">
+					<text>Nah, we'll just murder you anyways.</text>
+					<event>
+						<text>The captain steels their resolve and prepares to face you in combat.</text>
+						<ship hostile="true"/>
+						<choice hidden="true">
+							<text>Continue...</text>
+							<event load="COMBAT_CHECK"/>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true" req="weapons" lvl="6" blue="true">
+			<text>(Lvl 6 Weapons) Show the Elite you mean business.</text>
+			<event>
+				<text>You fire your entire salvo of weaponry at the Rebel vessel, narrowly missing it and vaporizing a nearby asteroid instead. The captain looks impressed, despite their best efforts to hide it. "Heh, nice laser light show you got over there. Listen - maybe we don't have to fight after all? It's not like I'm scared or anything - I just don't want to ruin the paint job."</text>
+				<choice>
+					<text>Sure, I guess.</text>
+					<autoReward level="HIGH">standard_no_item</autoReward>
+					<event/>
+				</choice>
+				<choice hidden="true">
+					<text>Reject the offer and begin combat.</text>
+					<event>
+						<ship hostile="true"/>
+						<text>"Your loss. I'll still win anyways." The Elite cuts comms and begins offensive mauevers.</text>
+						<choice hidden="true">
+							<text>Continue...</text>
+							<event load="COMBAT_CHECK"/>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true" req="artillery" lvl="4" blue="true">
+			<text>(Lvl 4 Artillery) Show the Elite you mean business.</text>
+			<event>
+				<text>You fire your artillery at the Rebel vessel, narrowly missing it and vaporizing a nearby asteroid instead. The captain looks impressed, despite their best efforts to hide it. "Heh, nice laser light show you got over there. Listen... maybe we don't have to fight after all? It's not like I'm scared or anything - I just don't want to ruin the paint job."</text>
+				<choice>
+					<text>Sure, I guess.</text>
+					<autoReward level="HIGH">standard_no_item</autoReward>
+					<event/>
+				</choice>
+				<choice hidden="true">
+					<text>Reject the offer and begin combat.</text>
+					<event>
+						<ship hostile="true"/>
+						<text>"Your loss. I'll still win anyways." The Elite cuts comms and begins offensive mauevers.</text>
+						<choice hidden="true">
+							<text>Continue...</text>
+							<event load="COMBAT_CHECK"/>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
+			<text>(Jerry) Can't we just get along?</text>
+			<event>
+				<text>Upon hearing Jerry speak, the captain's disposition quickly shifts to one of amazement and finally adoration. "Wait, JERRY? I remember you from my time in the Protectorate! Can I get an autograph?"
+
+"Uh, sure?"
+					
+"Thanks!" The captain smiles. "I kinda miss my days at the Protectorate, to be honest. I want to see the universe, not sit here waiting for this damn U1 crisis to end."
+					
+After a bit of idle chatter, the Rebel captain agrees to join your crew, saying "you might actually stand a chance with me on board".</text>
+				<crewMember amount="1" class="human_soldier">Matt</crewMember>
+			</event>
+		</choice>
+	</event>
+	
+	<event name="SURRENDER_FRONTIER_ELITE_INSULT">
+		<text>You receive a hail from the Elite's captain, having clearly undererestimated your shsip's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
 		<choice>
-			<text>Continue...</text>
+			<text>Accept their surrender.</text>
+			<weapon name="GIFTLIST_REBEL"/>
+			<ship hostile="false"/>
+		</choice>
+		<choice>
+			<text>Ignore them and continue fighting.</text>
 			<event/>
 		</choice>
 	</event>
-	<event>
-		<text>The MV Rebel hails you, their captain's sunny disposition contrasting with the poor state of their ship's engines. "Thanks for the assist - those damn Duskbringers put up a pretty good fight for a 'supply vessel'. Now, I know we've got our differences and all, but I'm a diplomat, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
-		<autoReward level="MED">scrap_only</autoReward>
+	
+	<ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_ELITE_INSULT">
+		<surrender chance="0" min="2" max="2" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
+		<destroyed>
+			<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
+			<autoReward level="MED">standard_no_item</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+					<weapon name="GIFTLIST_REBEL"/>
+				</event>
+				<event>
+					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+					<weapon name="GIFTLIST_REBEL"/>
+				</event>
+			</choice>
+		</destroyed>
+		<deadCrew>
+			<text>The Elite's crew has been slain, leaving much loot and an intact weapon for the taking.</text>
+			<autoReward level="HIGH">standard_no_item</autoReward>
+			<weapon name="GIFTLIST_REBEL"/>
+			<choice>
+				<text>Continue...</text>
+				<event/>
+			</choice>
+		</deadCrew>
+	</ship>
+	
+	<event name="FRONTIER_REBEL_ARGUMENT" unique="true">
+		<text>Immediately upon jumping into the beacon, your comms light up with an argument being held over an open channel. After a brief search, you find the source to be three Rebel ships parked in a circle: A local Rebel Elite, an Engineer, and an MV Rebel.</text>
 		<choice>
-			<text>Continue...</text>
-			<event/>
+			<text>Tune in.</text>
+			<event>
+				<text>From what you can gather between the expletives, slurs, and ad hominem statements about certain parties' mothers, the three ships appear to be locked in a heated debate about which corps is the most vital to the Rebellion.</text>
+
+				"The Rebellion was built on the backs of us Elites! We're the ones who lead the charge, who make up almost the entirety of the Rebel Fleet to begin with! If it weren't for us, the Rebellion would've lost aeons ago!"
+				
+				"That was back then. This is now! The Multiverse is wide open, and we're the ones to explore it. There wouldn't even be a Rebellion in this shithole universe if we hadn't come through!"
+
+				"Oh really? There wouldn't be a Rebellion. Great claim. One small issue, buddy. Check the fifteen thousand carriers' worth of Rebel Auto Ships scattered across the galaxy, waging our war for us without us even needing to lift a finger! The only reason there's even a Rebellion today is because of our damn work! Now admit it before I– Wait, is that a Fed?"
+
+				All three ships turn to face you, weapons thrumming.</text>
+				<choice hidden="true">
+					<text>Uh oh...</text>
+					<event>
+						<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
+
+							The MV Rebel bristles at the proposition. "They're not just Federation, numbnuts. They're a Renegade! Probably the same one the Fleet's after, if I had to guess."
+
+							"Oh, so they've totally fought a bunch of us!" Chimes in the Elite.
+
+							"Ugh, that's– That's actually a good point."
+						
+							The three ships power their weapons down. 
+						
+							"So, Feddy boy. Which of us do you think is the most important to the Rebellion?"</text>
+						<choice hidden="true">
+							<text>The Rebel Elites.</text>
+							<event>
+								<text>You can't deny - The Elites certainly seem to handle most of the Rebellion's groundwork these days. 
+
+									"Ha! Told you!" The Elite gloats, his words barely audible above his allies' collective groans. The other two ships immediately jump away, leaving you alone with the Elite.
+
+									"Thanks for that, man. Sometimes it feels like all the effort I've put into helping the Rebellion is just going to waste with guys like that. Actually, you know what? Screw 'em. I'm going with you guys."</text>
+								<crewMember amount="1" class="human_soldier"></crewMember>
+							</event>
+						</choice>
+						<choice hidden="true">
+							<text>The Multiversal Fleet.</text>
+							<event>
+								<text>The Rebellion probably wouldn't still be staying afloat without the extra manpower from U1, and U1 certainly wouldn't have much reach without the MV Fleet. The captain of the MV Vessel jeers triumphantly as the other two ships jump away in shame.
+
+									"I never would've thought a Renegade of all people would back me up, but I guess this Multiverse is full of surprises, huh? Here, take this weapon. From one Multiverse traveler to another."
+
+									With that, he jumps away, leaving you with your spoils.</text>
+								<weapon name="GIFTLIST_REBEL"/>
+							</event>
+						</choice>
+						<choice hidden="true">
+							<text>The Engineer Corps.</text>
+							<event>
+								<text>While the Engineers may not be the most numerous or most active group in the Rebellion, you can't deny the sheer number of Auto Ships you've seen on your travels. The Elite and the MV Rebel groan in unison as the Engineer breaks into a bout of nasal laughter. Before long, both losers exit the system, leaving you alone with the Engineer.
+									
+									"Hehehe, I knew it was a good idea to ask you! Here – a drone schematic for your trouble. And stay safe out there! Federation or not, I wouldn't want to see a fellow appreciator of technology get blown to bits." The engineer jumps away.</text>
+								<drone name="GIFTLIST_COMBAT_DRONES"/>
+							</event>
+						</choice>
+						<choice hidden="true" req="human_mfk" blue="true">
+							<text>(MFK Ace) The MFK Aces.</text>
+							<event>
+								<text>All three captains open their mouths to shout at you in unison, but their words die in their throats as they see your MFK Ace on their comms. They offer a series of hurried apologies and some scrap, then leave without another word.</text>
+								<autoReward level="HIGH">scrap_only</autoReward>
+							</event>
+						</choice>
+						<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
+							<text>(Jerry) "All of you!"</text>
+							<event>
+								<text>"All this arguing about 'who's better than everyone else' is dumb! Sure, we wouldn't have a Rebellion without the Elites. But the same could be said for the MV Rebels, or the Engineers for that matter! Each of you is equally important towards keeping the Rebellion running smoothly, and for that you each deserve an award."
+									
+									Jerry finishes his speech to racuous applause from all three captains.
+									
+									"Huh, that actually kinda makes sense. To think we wasted several system hours bickering when the answer to our problem was so simple after all..."
+								
+									"Uh, guys, I'm sorry for being stubborn and saying things about your mothers."
+								
+									"It's fine."
+								
+									"Apology accepted."
+								
+									Before jumping away, the three ships each give you a gift as thanks for helping end the conflict on a good note.</text>
+									<autoReward level="MED">scrap-only</autoReward>
+									<weapon list="GIFTLIST_REBEL"/>
+									<damage amount="-7"/> 
+							</event>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>That's three ships too many. Let's leave.</text>
+			<event>
+				<text>You quickly turn around and leave the three ships to their squabbling. They don't seem to notice you.</text>
+				<choice>
+					<text>Do something onboard the ship.</text>
+					<event load="STORAGE_CHECK"/>
+				</choice>
+				<choice>
+					<text>Do nothing.</text>
+					<event/>
+				</choice>
+			</event>
 		</choice>
 	</event>
-	<event>
-		<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you realize your location might have been compromised, but at least you can salvage what little debris was left behind from the jump.</text>
-		<modifyPursuit amount="1"/>
-		<autoReward level="LOW">fuel</autoReward>
-		<choice>
-			<text>Continue...</text>
-			<event/>
-		</choice>
-	</event>
-</eventList>
 </FTL>
