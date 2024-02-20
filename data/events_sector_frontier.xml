@@ -267,8 +267,8 @@
 
 							Before jumping away, the captain gives you a weapon for helping him find a better career path.
 						</text>
-						<autoReward level="MED">stuff</autoReward>
-						<weapon="GIFTLIST_REBEL"/>
+						<autoReward level="MED">scrap</autoReward>
+						<weapon name="GIFTLIST_REBEL"/>
 					</event>
 				</choice>
 			</event>
