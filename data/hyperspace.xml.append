@@ -9,8 +9,8 @@
         </shipIcons>
         <crew>
             <human_soldier room="0" name="Matt"/>
-            <human_soldier room="2"/>
-            <human_soldier room="3"/>
+            <human_soldier room="1"/>
+            <human_soldier room="1"/>
             <human_soldier room="4"/>
             <human_engineer room="5"/>
             <human_medic room="6"/>

@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 	-->
 	<shipBlueprint name="MU_REBEL_ELITE_INSULT">
-		<class>Elite Fighter</class>
+		<class>Best Elite Fighter Ever!!!!</class>
 		<systemList>
 			<engines power="1" max="2" room="5" start="true"/>
 			<medbay power="1" max="2" room="3" start="true"/>

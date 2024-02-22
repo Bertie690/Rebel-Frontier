@@ -1,6 +1,6 @@
 <FTL>
 	<event name="FRONTIER_DOGFIGHT">
-		<text>You arrive at the beacon to find a Duskbringer transport sparring with an MV Rebel some distance away. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what sort of response you'd receive from the other ship afterwards.</text>
+		<text>You arrive at the beacon to find a Duskbringer transport sparring with an MV Rebel some distance away. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what response you'd receive from the other ship afterwards.</text>
 		<choice hidden="true">
 			<text>Help the Duskbringers.</text>
 			<event>
@@ -94,7 +94,7 @@
 	</event>
 	<ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
 		<destroyed>
-			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed in the process. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
+			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
 			<autoReward level="MED">missiles</autoReward>
 			<choice hidden="true">
 				<text>Check in with the MV Rebels.</text>
@@ -103,7 +103,7 @@
 		</destroyed>
 		<deadCrew>
 			<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
-			<autoReward level="MED">scrap_only</autoReward>
+			<autoReward level="LOW">scrap_only</autoReward>
 			<weapon name="GIFTLIST_ENERGY"/>
 			<choice hidden="true">
 				<text>Check in with the MV Rebels.</text>
@@ -129,7 +129,7 @@
 	
 	<event name="FRONTIER_ELITE_INSULT" unique="true">
 		<ship load="SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
-		<text>You arrive at the beacon to see a particularly well-armed Elite Rebel jump in and attempt to hail you. Surprised, you accept and are met with a young Rebel clad in heavy-duty armor, who keels over laughing at the sight of your ship. "So THIS is the Renegade Command's been sending ships everywhere to find? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something big, not this tiny little thing!".</text> 
+		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been sending ships everywhere to find? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Get dunked on!".</text> 
 		<choice hidden="true">
 			<text>How dare you! Man the guns.</text>
 			<event>
@@ -140,25 +140,24 @@
 		</choice>
 		<choice hidden="true" req="WEAPON_PREIGNITE" blue="true">
 			<!---  preigniting augments)-->
-			<text>(Weapon Pre-igniter) Blast them into nonexistence.</text>
+			<text>(Weapon Pre-igniter) Nuke them.</text>
 			<event>
-				<text>Without missing a beat, you fire a salvo directly into the Elite's shields, creating a massive explosion and sending their crew into chaos. The captain hastily apologizes and ejects a weapon out the airlock as surrender before running as far away from your ship as physically possible."</text>
+				<text>Without missing a beat, you fire a salvo directly into the Elite's shields, creating a massive explosion that sends their crew into chaos. The captain hastily apologizes and ejects a weapon out the airlock as surrender before running as far away from your ship as physically possible.</text>
 				<autoReward level="HIGH">standard_no_item</autoReward>
-				<weapon name="LIST_WEAPONS_REBEL"/>
+				<weapon name="GIFTLIST_REBEL"/>
 				<instantEscape/>
 				<event/>
 			</event>
 		</choice>
 		<choice hidden="true" req="BLUELIST_INSTANT_DAMAGE" blue="true">
 			<!--- list of damaging pre-emptive weapons)-->
-			<text>(Damaging Pre-Emptive Weapon) Snipe them while they're exposed.</text>
+			<text>(Damaging Pre-Emptive Weapon) Shoot them while they're exposed.</text>
 			<event>
-				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, ripping a hole into it. The captain's haughty disposition quickly fades away as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
+				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, damaging and ripping a hole into it. The captain's haughty disposition fades as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
 				<enemyDamage amount="3" system="weapons" effect="breach" force="true" damageHull="true"/>
 				<choice>
 					<text>Accept their surrender.</text>
-					<autoReward level="MED">scrap_only</autoReward>
-					<weapon name="LIST_WEAPONS_REBEL"/>
+					<autoReward level="LOW">weapon</autoReward>
 					<event/>
 				</choice>
 				<choice hidden="true">
@@ -175,16 +174,15 @@
 			</event>
 		</choice>
 		<choice hidden="true" req="BLUELIST_INSTANT_NODAMAGE" blue="true">
-			<!--- list of pre-emptive weapons)-->
-			<text>(Non-Damaging Pre-Emptive Weapon) Cripple them while they're exposed.</text>
+			<!--- list of non-damaging pre-emptive weapons)-->
+			<text>(Non-Damaging Pre-Emptive Weapon) Shoot them while they're exposed.</text>
 			<event>
-				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, crippling it and lighting it ablaze. The captain's haughty disposition quickly fades away as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
-				<status type="loss" target="player" amount="1" system="weapons"/>
+				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, crippling it and lighting it ablaze. The captain's haughty disposition fades as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
+				<status type="loss" target="enemy" amount="1" system="weapons"/>
 				<enemyDamage amount="0" system="weapons" effect="fire"/>			
 				<choice>
 					<text>Accept their surrender.</text>
-					<autoReward level="MED">scrap_only</autoReward>
-					<weapon name="LIST_WEAPONS_REBEL"/>
+					<autoReward level="LOW">weapon</autoReward>
 					<event/>
 				</choice>
 				<choice hidden="true">
@@ -247,30 +245,10 @@
 		<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
 			<text>(Jerry) "Hello!"</text>
 			<event>
-				<text>Upon hearing Jerry speak, the captain's disposition quickly shifts to one of amazement and adoration. "Wait, JERRY? I'm your biggest fan! Can I get an autograph?"
-					
-					"Uh, sure?" 
-					
-					"Thanks!" The captain smiles before sighing wistfully. "I kinda regret joining the Rebellion, to be honest. I wanted to be a scout so I could see the universe, but got posted to this boring ass sector instead..."					
-				</text>
-				<choice>
-					<text>You can come with us, you know - we could always use another set of hands.</text>
-					<event>
-						<text>"You really mean it? Great! I'll just grab my stuff and head out."</text>
-						<crewMember amount="1" piloting="2" class="human_soldier">Matt</crewMember>
-					</event>
-				</choice>
-				<choice hidden="true">
-					<text>If your job doesn't make you happy, why not find a new one instead?</text>
-					<event>
-						<text>"That actually makes sense. Maybe I'll join the Federation or Militia. Hopefully they give better wages..."
-
-							Before jumping away, the captain gives you a weapon for helping him find a better career path.
-						</text>
-						<autoReward level="MED">scrap</autoReward>
-						<weapon name="GIFTLIST_REBEL"/>
-					</event>
-				</choice>
+				<text>Upon hearing Jerry speak, the captain's disposition changes to one of surprise and adoration. "Wait, you have JERRY on your ship? I take everything back - I'm a huge fan!"
+				
+				After asking Jerry for his autograph, the Elite gives you a weapon and some scrap before heading out.</text>
+				<autoReward level="HIGH">weapon</autoReward>
 			</event>
 		</choice>
 	</event>
@@ -292,7 +270,7 @@
 		<surrender chance="0" min="2" max="2" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
 		<destroyed>
 			<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
-			<autoReward level="MED">standard_no_item</autoReward>
+			<autoReward level="MED">standard</autoReward>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -302,9 +280,15 @@
 			</choice>
 		</destroyed>
 		<deadCrew>
-			<text>The Elite's crew has been slain, leaving much loot and an intact weapon for the taking.</text>
-			<autoReward level="HIGH">standard_no_item</autoReward>
-			<weapon name="GIFTLIST_REBEL"/>
+			<text>The Elite's crew has been slain, and their loot is yours to take. Serves them right for insulting you.</text>
+			<autoReward level="HIGH">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+					<weapon name="GIFTLIST_REBEL"/>
+				</event>
+			</choice>
 		</deadCrew>
 	</ship>
 	
@@ -314,94 +298,17 @@
 			<text>Tune in.</text>
 			<event>
 				<text>From what you can gather between the expletives, slurs, and ad hominem statements about certain parties' mothers, the three ships appear to be locked in a heated debate about which corps is the most vital to the Rebellion.</text>
-
+				
 				"The Rebellion was built on the backs of us Elites! We're the ones who lead the charge, who make up almost the entirety of the Rebel Fleet to begin with! If it weren't for us, the Rebellion would've lost aeons ago!"
 				
 				"That was back then. This is now! The Multiverse is wide open, and we're the ones to explore it. There wouldn't even be a Rebellion in this shithole universe if we hadn't come through!"
-
+				
 				"Oh really? There wouldn't be a Rebellion. Great claim. One small issue, buddy. Check the fifteen thousand carriers' worth of Rebel Auto Ships scattered across the galaxy, waging our war for us without us even needing to lift a finger! The only reason there's even a Rebellion today is because of our damn work! Now admit it before I– Wait, is that a Fed?"
-
-				All three ships turn to face you, weapons thrumming.
-			</text>
+				
+				All three ships turn to face you, weapons thrumming.</text>
 				<choice hidden="true">
 					<text>Uh oh...</text>
-					<event>
-						<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
-
-							The MV Rebel bristles at the proposition. "They're not just Federation, numbnuts. They're a Renegade! Probably the same one the Fleet's after, if I had to guess."
-
-							"Oh, so they've totally fought a bunch of us!" Chimes in the Elite.
-
-							"Ugh, that's– That's actually a good point."
-						
-							The three ships power their weapons down. 
-						
-							"So, Feddy boy. Which of us do you think is the most important to the Rebellion?"
-						</text>
-						<choice hidden="true">
-							<text>The Rebel Elites.</text>
-							<event>
-								<text>You can't deny - The Elites certainly seem to handle most of the Rebellion's groundwork these days. 
-
-									"Ha! Told you!" The Elite gloats, his words barely audible above his allies' collective groans. The other two ships quickly jump away, leaving you alone with the Elite.
-
-									"Thanks for that, man. Sometimes it feels like all the effort I've put into helping the Rebellion is just going to waste with guys like that. Actually, you know what? Screw 'em. I'm going with you guys."
-								</text>
-								<crewMember amount="1" class="human_soldier"></crewMember>
-							</event>
-						</choice>
-						<choice hidden="true">
-							<text>The Multiversal Fleet.</text>
-							<event>
-								<text>The Rebellion probably wouldn't still be staying afloat without the extra manpower from U1, and U1 certainly wouldn't have much reach without the MV Fleet. The captain of the MV Vessel jeers triumphantly as the other two ships jump away in shame.
-
-									"I never would've thought a Renegade of all people would back me up, but I guess this Multiverse is full of surprises, right? Here, take this weapon. From one Multiverse traveler to another."
-
-									With that, he jumps away, leaving you with your spoils.
-								</text>
-								<weapon name="GIFTLIST_REBEL"/>
-							</event>
-						</choice>
-						<choice hidden="true">
-							<text>The Engineer Corps.</text>
-							<event>
-								<text>While the Engineers may not be the most numerous or most active group in the Rebellion, you can't deny the sheer number of Auto Ships you've seen on your travels. The Elite and the MV Rebel groan in unison as the Engineer breaks into a bout of nasal laughter. Before long, both losers exit the system, leaving you alone with the Engineer.
-									
-									"Hehehe, I knew it was a good idea to ask you! Here – a drone schematic for your trouble. And stay safe out there! Federation or not, I wouldn't want to see a fellow appreciator of technology get blown to bits." The engineer jumps away.
-								</text>
-								<drone name="GIFTLIST_COMBAT_DRONES"/>
-							</event>
-						</choice>
-						<choice hidden="true" req="human_mfk" blue="true">
-							<text>(MFK Ace) The MFK Aces.</text>
-							<event>
-								<text>All three captains open their mouths to shout at you in unison, but their words die in their throats as they see your MFK Ace glare at them. They offer a series of hurried apologies and some scrap, then leave without another word.</text>
-								<autoReward level="HIGH">scrap_only</autoReward>
-							</event>
-						</choice>
-						<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
-							<text>(Jerry) "All of you!"</text>
-							<event>
-								<text>"Does it really matter which group is really 'the best'? Sure, we wouldn't have a Rebellion without the Elites. But the same could be said for the MV Rebels, or the Engineers for that matter! Each corps is vitally important towards keeping the Rebellion running smoothly, so I guess you're all winners in a sense."
-									
-									Jerry finishes his speech to racuous applause from all three captains.
-									
-									"Well put. To think we wasted several system hours bickering when the answer to our problem was so simple after all..."
-								
-									"Uh, guys, I'm sorry for being stubborn and saying things about your mothers."
-								
-									"It's fine."
-								
-									"Apology accepted."
-								
-									Before jumping away, the three ships each give you a gift as thanks for helping find a peaceful resoultion to the conflict.
-								</text>
-									<autoReward level="MED">scrap-only</autoReward>
-									<weapon list="GIFTLIST_REBEL"/>
-									<damage amount="-7"/> 
-							</event>
-						</choice>
-					</event>
+					<event load="FRONTIER_REBEL_ARGUMENT_2"/>
 				</choice>
 			</event>
 		</choice>
@@ -420,5 +327,82 @@
 			</event>
 		</choice>
 	</event>
-	
+	<event name="FRONTIER_REBEL_ARGUMENT_2">
+		<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
+			
+		The MV Rebel bristles at the proposition. "They're not just Federation, numbnuts. They're a Renegade! Probably the same one the Fleet's after, if I had to guess."
+			
+		"Oh, so they've totally fought a bunch of us!" Chimes in the Elite.	
+		
+		"Ugh, that's - That's actually a good point."
+		
+		The three ships power their weapons down. 
+			
+		"So, Feddy boy. Which of us do you think is the most important to the Rebellion?"</text>
+		<choice hidden="true">
+			<text>The Rebel Elites.</text>
+			<event>
+				<text>You can't deny - The Elites certainly seem to handle most of the Rebellion's groundwork these days. 
+					
+				"Ha! Told you!" The Elite gloats, his words barely audible above his allies' collective groans. The other two ships quickly jump away, leaving you alone with the Elite.
+					
+				Thanks for that, man. Sometimes it feels like all the effort I've put into helping the Rebellion is just going to waste with guys like that. Actually, you know what? Screw 'em. I'm going with you guys."</text>
+				<crewMember amount="1" class="human_soldier"></crewMember>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>The Multiversal Fleet.</text>
+			<event>
+				<text>The Rebellion probably wouldn't still be staying afloat without the extra manpower from U1, and U1 certainly wouldn't have much reach without the MV Fleet. The captain of the MV Vessel jeers triumphantly as the other two ships jump away in shame.
+				
+				"I never would've thought a Renegade of all people would back me up, but I guess this Multiverse is full of surprises, right? Here, take this weapon. From one Multiverse traveler to another."
+				
+				With that, he jumps away, leaving you with your spoils.</text>
+				<weapon name="GIFTLIST_REBEL"/>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>The Engineer Corps.</text>
+			<event>
+				<text>While the Engineers may not be the most numerous or most active group in the Rebellion, you can't deny the sheer number of Auto Ships you've seen on your travels. The Elite and the MV Rebel groan in unison as the Engineer breaks into a bout of nasal laughter. Before long, both losers exit the system, leaving you alone with the Engineer.
+				
+				"Hehehe, I knew it was a good idea to ask you! Here - a drone schematic for your trouble. And stay safe out there! Federation or not, I wouldn't want to see a fellow appreciator of technology get blown to bits." The engineer jumps away.</text>
+				<drone name="GIFTLIST_COMBAT_DRONES"/>
+			</event>
+		</choice>
+		<choice hidden="true" req="human_mfk" blue="true">
+			<text>(MFK Ace) The MFK Aces.</text>
+			<event>
+				<text>All three captains open their mouths to shout at you in unison, but their words die in their throats as they see your MFK Ace glare at them. They offer a series of hurried apologies and some scrap, then leave without another word.</text>
+				<autoReward level="HIGH">scrap_only</autoReward>
+			</event>
+		</choice>
+		<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
+			<text>(Jerry) "All of you!"</text>
+			<event>
+				<text>"Does it really matter which group is 'the best'? Sure, we wouldn't have a Rebellion without the Elites. But the same could be said for the MV Rebels, or the Engineers for that matter! Each of you is vitally important towards keeping the Rebellion running smoothly, so I guess you're all winners in a sense."
+				
+				Jerry finishes his speech to racuous applause from all three captains.
+				
+				"Well said. To think we wasted several system hours bickering when the answer to our problem was so simple after all..."
+				
+				"Guys, I'm sorry for being a bit stubborn and saying things about your mothers."
+				
+				"It's fine."
+				
+				"Apology accepted."
+				
+				Before jumping away, the three ships each give you a gift as thanks for helping resolve the conflict.</text>
+				<autoReward level="MED">scrap-only</autoReward>
+				<weapon list="GIFTLIST_REBEL"/>
+				<modifyPursuit amount="-1"/> 
+			</event>
+		</choice>
+	</event>
+
+	<event name="FRONTIER_VETERAN">
+		<text>A lone Rebel vessel hails you as you jump in. A young Rebel officer appears onscreen, though the look in their eyes is that of a haggard old veteran. "You're a Fed, right? Question: What do you think about the Rebellion?"</text>
+		<ship name="REBEL_FIGHTER"
+		<choice
+	</event>
 </FTL>
