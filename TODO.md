@@ -1,4 +1,4 @@
-This is just a list of all event ideas and such that will being included in the mod (including finished ones for reference)
+This is just a list of all event ideas and such (including finished ones for reference)
 
 *Italics = WIP*
 
@@ -22,8 +22,8 @@ Event list:
 
 ### Medium Events
 
-* Disillusioned veteran 
-* *Engineer, MV, and Elite Rebel ships arguing* WIP
+* *Disillusioned veteran* WIP
+* ~~Engineer, MV, and Elite Rebel ships arguing~~ DONE
 * MFK Ace recruitment center 
 * DISTRESS - Engineer dealing with propaganda satellite
 
@@ -37,3 +37,6 @@ Event list:
 ### Other 
 
 * Guard
+* Atlas entry
+* Loot transport
+* Generic fights against various people
