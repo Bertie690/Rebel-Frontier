@@ -17,7 +17,7 @@
 			<event>
 				<text>You open fire at the transport to draw its attention, which retaliates by boarding you with several Duskbringers!</text>
 				<ship load="SHIP_FRONTIER_DOGFIGHT_DUSK" hostile="true"/>
-				<boarders min="3" max="3" class="zoltan_devotee"/>
+				<boarders min="2" max="3" class="zoltan_devotee"/>
 				<choice hidden="true">	
 					<text>Continue...</text>
 					<event load="COMBAT_CHECK"/>
@@ -59,7 +59,7 @@
 		</deadCrew>
 	</ship>
 	<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
-		<text>The Duskbringer transport hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but I highly doubt we'd make it there alive given the poor reception. Here, have some supplies - we won't be needing them anymore."</text>
+		<text>The Duskbringer transport hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but even I was surprised at the sheer hostility of those blue bastards. Here, have some supplies - we won't be needing them anymore."</text>
 		<autoReward level="MED">missiles</autoReward>
 		<choice hidden="true">
 			<text>Accept their gift and wish them on their way.</text>
@@ -72,7 +72,7 @@
 				<choice>
 					<text>Buy a normal Energy weapon.</text>
 					<item_modify>
-						<item type="scrap" min="-40" max="-50"/>
+						<item type="scrap" min="-45" max="-55"/>
 					</item_modify>
 					<weapon name="GIFTLIST_ENERGY"/>
 					<event/>
@@ -80,7 +80,7 @@
 				<choice>
 					<text>Buy a Loot Weapon.</text>
 					<item_modify>
-						<item type="scrap" min="-55" max="-65"/>
+						<item type="scrap" min="-60" max="-70"/>
 					</item_modify>
 					<weapon name="LIST_LOOT_DUSKBRINGER"/>
 					<event/>
@@ -113,11 +113,11 @@
 	</ship>
 	<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
 		<event>
-			<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't care. That said, I suppose I can feed the fleet false information as payback - beats doing border patrol I guess." The MV Rebel jumps away.</text>
+			<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't give a damn. That said, I suppose I can feed the fleet false information as payback - beats doing border patrol I guess." They jump away.</text>
 			<modifyPursuit amount="-2"/>
 		</event>
 		<event>
-			<text>The MV Rebel hails you, their captain's sunny disposition contrasting with the poor state of their ship's engines. "Thanks for the assist - those Duskbringers didn't know the meaning of 'import tax'. Now, I know we've got our differences and all, but I'm a businessman, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
+			<text>The MV Rebel hails you. "Thanks for the assist - those Duskbringers didn't know the meaning of 'supply blockade'. Now, I know we've got our differences and all, but I'm a businessman, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
 			<autoReward level="MED">scrap_only</autoReward>
 		</event>
 		<event>
@@ -129,7 +129,7 @@
 	
 	<event name="FRONTIER_ELITE_INSULT" unique="true">
 		<ship load="SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
-		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been sending ships everywhere to find? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Get dunked on!".</text> 
+		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been going crazy over? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Geeeet dunked on nerd!"</text> 
 		<choice hidden="true">
 			<text>How dare you! Man the guns.</text>
 			<event>
@@ -153,7 +153,7 @@
 			<!--- list of damaging pre-emptive weapons)-->
 			<text>(Damaging Pre-Emptive Weapon) Shoot them while they're exposed.</text>
 			<event>
-				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, damaging and ripping a hole into it. The captain's haughty disposition fades as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
+				<text>You fire your pre-emptive weapon directly into the Elite's weapons system, ripping a hole into it. The captain's haughty disposition fades as they realize your ship is no small threat. "Alright alright, you've made your point already! Would a weapon suffice to leave us alone?"</text>
 				<enemyDamage amount="3" system="weapons" effect="breach" force="true" damageHull="true"/>
 				<choice>
 					<text>Accept their surrender.</text>
@@ -247,14 +247,18 @@
 			<event>
 				<text>Upon hearing Jerry speak, the captain's disposition changes to one of surprise and adoration. "Wait, you have JERRY on your ship? I take everything back - I'm a huge fan!"
 				
-				After asking Jerry for his autograph, the Elite gives you a weapon and some scrap before heading out.</text>
+				After getting a signed photo of Jerome Wentworth himself, the Elite gives you a weapon and some scrap before heading out.</text>
 				<autoReward level="HIGH">weapon</autoReward>
 			</event>
+		</choice>
+		<choice>
+			<text>You doubt the Rebel would let you escape unscathed...</text>
+			<event load="OPTION_INVALID"/>
 		</choice>
 	</event>
 	
 	<event name="SURRENDER_FRONTIER_ELITE_INSULT">
-		<text>You receive a hail from the Elite's captain, having clearly undererestimated your shsip's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
+		<text>You receive a hail from the Elite's captain, having clearly undererestimated your ship's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
 		<choice>
 			<text>Accept their surrender.</text>
 			<weapon name="GIFTLIST_REBEL"/>
@@ -307,8 +311,16 @@
 				
 				All three ships turn to face you, weapons thrumming.</text>
 				<choice hidden="true">
-					<text>Uh oh...</text>
+					<text>Uh, hi?</text>
 					<event load="FRONTIER_REBEL_ARGUMENT_2"/>
+				</choice>
+				<choice hidden="true">
+					<text>Take no chances - attack the Rebels.</text>
+					<event>
+						<text>For a group supposedly divided, the three ships are suprisingly quick to unite in the face of danger. The Elite Rebel charges forward to engage while the Engineer and MV Rebel provide fire support from the sidelines!</text>
+						<ship name="MU_REBEL_ELITE" hostile="true"/>
+						<event load="COMBAT_CHECK"/>
+					</event>
 				</choice>
 			</event>
 		</choice>
@@ -327,6 +339,7 @@
 			</event>
 		</choice>
 	</event>
+
 	<event name="FRONTIER_REBEL_ARGUMENT_2">
 		<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
 			
@@ -347,7 +360,7 @@
 				"Ha! Told you!" The Elite gloats, his words barely audible above his allies' collective groans. The other two ships quickly jump away, leaving you alone with the Elite.
 					
 				Thanks for that, man. Sometimes it feels like all the effort I've put into helping the Rebellion is just going to waste with guys like that. Actually, you know what? Screw 'em. I'm going with you guys."</text>
-				<crewMember amount="1" class="human_soldier"></crewMember>
+				<crewMember amount="1" class="human_soldier">MacDonald</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
@@ -394,15 +407,51 @@
 				
 				Before jumping away, the three ships each give you a gift as thanks for helping resolve the conflict.</text>
 				<autoReward level="MED">scrap-only</autoReward>
-				<weapon list="GIFTLIST_REBEL"/>
-				<modifyPursuit amount="-1"/> 
+				<weapon name="GIFTLIST_REBEL"/>
+				<modifyPursuit amount="-1"/>
 			</event>
 		</choice>
 	</event>
 
-	<event name="FRONTIER_VETERAN">
-		<text>A lone Rebel vessel hails you as you jump in. A young Rebel officer appears onscreen, though the look in their eyes is that of a haggard old veteran. "You're a Fed, right? Question: What do you think about the Rebellion?"</text>
-		<ship name="REBEL_FIGHTER"
-		<choice
+	<event name="FRONTIER_VETERAN_SURVEY" unique="true">
+		<text>A lone Rebel vessel hails you as you jump in. A young Rebel officer appears onscreen, though the look in his eyes suggests he's seen more than his fair share of battles. "A Fed? Interesting. Question: What's your honest opinion on the Rebellion as it stands today?"</text>
+		<ship name="LIST_SHIPS_REBEL_FIGHT" hostile="false">
+		<choice hidden="true">
+			<text>It's a band of oppressive, stupid pests that has no right to exist in this universe.</text>
+			<event>
+				<text>The Rebel sighs. "Can't say I expected much else from a Federation vessel. If you truly think of me as but a mere 'pest', then I suppose the only way this encounter can end is in conflict." His ship's weapons come to life; yours soon do the same.</text>
+				<ship hostile="true"/>
+				<choice hidden="true">
+					<text>Continue...</text>
+					<event load="COMBAT_CHECK"/>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>It's a glorious cause that will bring order and stability to the multiverse.</text>
+			<event>
+				<text>"Please. Do you really think I'm stupid enough to believe that's your honest answer? I think you're just lying to me hoping that I'll give you stuff. In that case, I see no need to prolong this conversation further." He cuts comms.</text>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>It has potential, but was led astray by immoral methods.</text>
+			<event>
+				<text>"Finally, someone who understands me!" The rebel smiles before sighing despondently. "I joined the Rebellion because I thought it was a heroic organization aiming to 'shape the galaxy for the better'. Turns out it's far less noble than the commercials made it out to be. No care or respect for basic rights, constant infighting between different corps, the entirety of upper management being completely useless... you get the idea. At this point, I've got half a mind to quit and find work at a factory somewhere, but the rest of my family needs the money..."</text>
+				<choice>
+					<text>Why not join our ship? The pay's good, and you even get free healthcare insurance.</text>
+					<event>
+						<text>"Sure, I guess. At least I won't have to listen to my commander bark orders at me anymore."</text>
+						<crewMember class="human_soldier">Fred</crewMember>
+					</event>
+				</choice>
+				<choice>
+					<text>What about forming a reform club? Try and spark change from within?</text>
+					<event>
+						<text>"That's an idea. Never thought I'd be taking advice from a Fed, but I'm desperate enough to try anything at this point." The rebel gives you some scrap as thanks before heading out.</text>
+						<autoReward level="MED">scrap-only</autoReward>
+					</event>
+				</choice>
+			</event>
+		</choice> 
 	</event>
 </FTL>

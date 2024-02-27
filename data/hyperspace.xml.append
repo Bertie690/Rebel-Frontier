@@ -4,9 +4,6 @@
     </mod:findLike>
     <mod:findLike type="ship">
         <mod-append:customShip name="MU_REBEL_ELITE_INSULT">
-        <shipIcons>
-            <shipIcon>icon_threat</shipIcon>
-        </shipIcons>
         <crew>
             <human_soldier room="0" name="Matt"/>
             <human_soldier room="1"/>

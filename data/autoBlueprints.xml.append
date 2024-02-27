@@ -6,8 +6,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 	-->
-	<shipBlueprint name="MU_REBEL_ELITE_INSULT">
-		<class>Best Elite Fighter Ever!!!!</class>
+	<shipBlueprint name="MU_REBEL_ELITE_INSULT" layout="mu_rebel_fighter" img="mu_rebel_fighter_elite">
+		<class>Best Elite Fighter Ever</class>
 		<systemList>
 			<engines power="1" max="2" room="5" start="true"/>
 			<medbay power="1" max="2" room="3" start="true"/>
@@ -22,7 +22,7 @@
 		<weaponList missiles="12" count="4" load="LIST_WEAPONS_REBEL"/>
 		<droneList drones="0" count="2"/>
 		<health amount="15"/>
-		<maxPower amount="13"/>
+		<maxPower amount="12"/>
 		<boardingAI>sabotage</boardingAI>
 	</shipBlueprint>
 	
