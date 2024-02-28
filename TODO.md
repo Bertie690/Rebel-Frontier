@@ -14,18 +14,18 @@ Event list:
 
 ### Minor Events
 
-* Rebel recruitment center
-* Jerry Fan Club
+* Rebel recruitment center 
+* Jerry Fan Club 
 * ~~Insulting Elite~~ DONE
 * ~~Duskbringer transport fighting with MV Rebel~~ DONE 
 * Leah mirror match slap fight (basically empty beacon)
 
 ### Medium Events
 
-* *Disillusioned veteran* WIP
+* ~~Disillusioned veteran~~ DONE
 * ~~Engineer, MV, and Elite Rebel ships arguing~~ DONE
 * MFK Ace recruitment center 
-* DISTRESS - Engineer dealing with propaganda satellite
+* *DISTRESS - Engineer dealing with propaganda satellite* WIP
 
 ### Major Events/Quests
 
