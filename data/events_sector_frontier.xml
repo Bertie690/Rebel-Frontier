@@ -1,5 +1,15 @@
 <FTL>
-	<event name="FRONTIER_DOGFIGHT">
+	<eventList name="ITEM_FRONTIER">
+		<event load="FRONTIER_REBEL_ARGUMENT"/>
+		<event load="FRONTIER_VETERAN_SURVEY"/>
+	</eventList>
+
+	<eventList name="NEUTRAL_FRONTIER">
+		<event load="FRONTIER_DOGFIGHT"/>
+		<event load="FRONTIER_ELITE_INSULT"/>
+	</eventList>
+
+	<event name="FRONTIER_DOGFIGHT" unique="true">
 		<text>You arrive at the beacon to find a Duskbringer transport sparring with an MV Rebel some distance away. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what response you'd receive from the other ship afterwards.</text>
 		<choice hidden="true">
 			<text>Help the Duskbringers.</text>
@@ -39,25 +49,6 @@
 			</event>
 		</choice>
 	</event>
-	
-	<ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
-		<destroyed>
-			<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
-			<autoReward level="MED">standard</autoReward>
-			<choice hidden="true">
-				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
-			</choice>
-		</destroyed>
-		<deadCrew>
-			<text>The MV Rebel's crew has been neutralized, leaving their ship a lifeless wreck. You collect all that you can find.</text>
-			<autoReward level="HIGH">standard</autoReward>
-			<choice hidden="true">
-				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
-			</choice>
-		</deadCrew>
-	</ship>
 	<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
 		<text>The Duskbringer transport hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but even I was surprised at the sheer hostility of those blue bastards. Here, have some supplies - we won't be needing them anymore."</text>
 		<autoReward level="MED">missiles</autoReward>
@@ -92,26 +83,7 @@
 			</event>
 		</choice>
 	</event>
-	<ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
-		<destroyed>
-			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
-			<autoReward level="MED">missiles</autoReward>
-			<choice hidden="true">
-				<text>Check in with the MV Rebels.</text>
-				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
-			</choice>
-		</destroyed>
-		<deadCrew>
-			<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
-			<autoReward level="LOW">scrap_only</autoReward>
-			<weapon name="GIFTLIST_ENERGY"/>
-			<choice hidden="true">
-				<text>Check in with the MV Rebels.</text>
-				<event load="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN"/>
-			</choice>
-		</deadCrew>
-	</ship>
-	<eventList name="LIST_FRONTIER_DOGFIGHT_MV_CHECKIN">
+	<eventList name="FRONTIER_DOGFIGHT_MV_CHECKIN">
 		<event>
 			<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't give a damn. That said, I suppose I can feed the fleet false information as payback - beats doing border patrol I guess." They jump away.</text>
 			<modifyPursuit amount="-2"/>
@@ -138,7 +110,7 @@
 				<event load="COMBAT_CHECK"/>
 			</event>
 		</choice>
-		<choice hidden="true" req="WEAPON_PREIGNITE" blue="true">
+		<choice hidden="true" req="WEAPON_PREIGNITE" var blue="true">
 			<!---  preigniting augments)-->
 			<text>(Weapon Pre-igniter) Nuke them.</text>
 			<event>
@@ -245,18 +217,27 @@
 		<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
 			<text>(Jerry) "Hello!"</text>
 			<event>
-				<text>Upon hearing Jerry speak, the captain's disposition changes to one of surprise and adoration. "Wait, you have JERRY on your ship? I take everything back - I'm a huge fan!"
+				<text>Upon hearing Jerry speak, the captain's disposition changes to one of surprise and adoration. "Wait.. you have JERRY on your ship? I take everything back - I'm a huge fan!"
 				
 				After getting a signed photo of Jerome Wentworth himself, the Elite gives you a weapon and some scrap before heading out.</text>
 				<autoReward level="HIGH">weapon</autoReward>
 			</event>
 		</choice>
 		<choice>
-			<text>You doubt the Rebel would let you escape unscathed...</text>
-			<event load="OPTION_INVALID"/>
+			<text>Just mute the comms and wait until he gives up.</text>
+			<event>
+				<text>After several minutes, the Elite realizes you aren't listening anymore and hangs up.</text>
+				<choice>
+					<text>Do something onboard the ship.</text>
+					<event load="STORAGE_CHECK"/>
+				</choice>
+				<choice>
+					<text>Do nothing.</text>
+					<event/>
+				</choice>
+			</event>
 		</choice>
 	</event>
-	
 	<event name="SURRENDER_FRONTIER_ELITE_INSULT">
 		<text>You receive a hail from the Elite's captain, having clearly undererestimated your ship's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
 		<choice>
@@ -269,32 +250,6 @@
 			<event/>
 		</choice>
 	</event>
-	
-	<ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_ELITE_INSULT">
-		<surrender chance="0" min="2" max="2" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
-		<destroyed>
-			<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
-			<autoReward level="MED">standard</autoReward>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event>
-					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
-					<weapon name="GIFTLIST_REBEL"/>
-				</event>
-			</choice>
-		</destroyed>
-		<deadCrew>
-			<text>The Elite's crew has been slain, and their loot is yours to take. Serves them right for insulting you.</text>
-			<autoReward level="HIGH">standard</autoReward>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event>
-					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
-					<weapon name="GIFTLIST_REBEL"/>
-				</event>
-			</choice>
-		</deadCrew>
-	</ship>
 	
 	<event name="FRONTIER_REBEL_ARGUMENT" unique="true">
 		<text>Immediately upon jumping into the beacon, your comms light up with an argument being held over an open channel. After a brief search, you find the source to be three Rebel ships parked in a circle: A local Rebel Elite, an Engineer, and an MV Rebel.</text>
@@ -309,18 +264,21 @@
 				
 				"Oh really? There wouldn't be a Rebellion. Great claim. One small issue, buddy. Check the fifteen thousand carriers' worth of Rebel Auto Ships scattered across the galaxy, waging our war for us without us even needing to lift a finger! The only reason there's even a Rebellion today is because of our damn work! Now admit it before I– Wait, is that a Fed?"
 				
-				All three ships turn to face you, weapons thrumming.</text>
+				All three ships turn to face you, weapons thrumming but not firing.</text>
 				<choice hidden="true">
-					<text>Uh, hi?</text>
-					<event load="FRONTIER_REBEL_ARGUMENT_2"/>
-				</choice>
-				<choice hidden="true">
-					<text>Take no chances - attack the Rebels.</text>
+					<text>Take no chances - attack them.</text>
 					<event>
-						<text>For a group supposedly divided, the three ships are suprisingly quick to unite in the face of danger. The Elite Rebel charges forward to engage while the Engineer and MV Rebel provide fire support from the sidelines!</text>
-						<ship name="MU_REBEL_ELITE" hostile="true"/>
+						<text>For a group supposedly divided, the three ships are suprisingly quick to unite in the face of danger. The Elite Rebel charges forward to engage with you while the Engineer and MV Rebel provide fire support from the sidelines!</text>
+						<ship name="SHIP_FRONTIER_ELITE_ARGUMENT" hostile="true"/>
+						<triggeredEvent event="FRONTIER_ARGUMENT_SURGE" time="25" thisFight="true" loops="99999">
+							<warningMessage x="692" y="84" time="5.0" centerText="true" flash="true" sound="surgeWarning" r="255" b="0" g="0" useWarningLine="true">Fire Support Incoming!</warningMessage>
+						</triggeredEvent>
 						<event load="COMBAT_CHECK"/>
 					</event>
+				<choice hidden="true">
+					<text>Hold off - something's up.</text>
+					<event load="FRONTIER_REBEL_ARGUMENT_2"/>
+				</choice>
 				</choice>
 			</event>
 		</choice>
@@ -339,7 +297,26 @@
 			</event>
 		</choice>
 	</event>
-
+	<event name="FRONTIER_ARGUMENT_SURGE">
+		<loadEventList seeded="false">
+			<event name="FRONTIER_ARGUMENT_SURGE_DRONE" req="MARKER_FRONTIER_ARGUMENT_SURGE" lvl="0">
+				<superDrones player="false" name="DRONE_SURGE_BASIC"/>
+				<hiddenAug>MARKER_FRONTIER_ARGUMENT_SURGE</hiddenAug>
+			</event>
+			<event name="FRONTIER_ARGUMENT_SURGE_LASER" req="MARKER_FRONTIER_ARGUMENT_SURGE">
+				<superBarrage player="false" name="LASER_SURGE_BASIC"/>
+				<removeItem>HIDDEN MARKER_FRONTIER_ARGUMENT_SURGE</removeItem>
+			</event>
+		</loadEventList>
+	</event>
+	<surgeDrones name="DRONE_SURGE_BASIC">
+		<drone name="COMBAT_1_LASER" count="1"/>
+		<drone name="FLAK_1_AMP3" count="1"/>
+		<drone name="COMBAT_1_BEAM" count="1"/>
+	</surgeDrones>
+	<surgeBarrage name="LASER_SURGE_BASIC">
+		<weapon name="BARRAGE_LASER" count="3"/>
+	</surgeBarrage>
 	<event name="FRONTIER_REBEL_ARGUMENT_2">
 		<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
 			
@@ -395,7 +372,7 @@
 			<event>
 				<text>"Does it really matter which group is 'the best'? Sure, we wouldn't have a Rebellion without the Elites. But the same could be said for the MV Rebels, or the Engineers for that matter! Each of you is vitally important towards keeping the Rebellion running smoothly, so I guess you're all winners in a sense."
 				
-				Jerry finishes his speech to racuous applause from all three captains.
+				Jerry finishes his speech to applause from all three captains.
 				
 				"Well said. To think we wasted several system hours bickering when the answer to our problem was so simple after all..."
 				
@@ -415,7 +392,7 @@
 
 	<event name="FRONTIER_VETERAN_SURVEY" unique="true">
 		<text>A lone Rebel vessel hails you as you jump in. A young Rebel officer appears onscreen, though the look in his eyes suggests he's seen more than his fair share of battles. "A Fed? Interesting. Question: What's your honest opinion on the Rebellion as it stands today?"</text>
-		<ship name="LIST_SHIPS_REBEL_FIGHT" hostile="false">
+		<ship name="LIST_SHIPS_REBEL_FIGHT" hostile="false"/>
 		<choice hidden="true">
 			<text>It's a band of oppressive, stupid pests that has no right to exist in this universe.</text>
 			<event>
@@ -438,7 +415,7 @@
 			<event>
 				<text>"Finally, someone who understands me!" The rebel smiles before sighing despondently. "I joined the Rebellion because I thought it was a heroic organization aiming to 'shape the galaxy for the better'. Turns out it's far less noble than the commercials made it out to be. No care or respect for basic rights, constant infighting between different corps, the entirety of upper management being completely useless... you get the idea. At this point, I've got half a mind to quit and find work at a factory somewhere, but the rest of my family needs the money..."</text>
 				<choice>
-					<text>Why not join our ship? The pay's good, and you even get free healthcare insurance.</text>
+					<text>Why not join our ship? The pay's good, and we even get free healthcare insurance.</text>
 					<event>
 						<text>"Sure, I guess. At least I won't have to listen to my commander bark orders at me anymore."</text>
 						<crewMember class="human_soldier">Fred</crewMember>
@@ -453,5 +430,50 @@
 				</choice>
 			</event>
 		</choice> 
+	</event>
+
+	<event name="DISTRESS_FRONTIER_FAKE_NEWS" distress="true" unique="true">
+		<text>Instead of a distress signal, your comms are flooded with a barrage of ads encouraging enlistment in the MV Rebels. "Th-he Federation is a bunch of liver-eating sheep-brained cannon fodder! Aliens are scientifically less good than humans! Are YOU a Rebel tired of all the dumb, lazy xeno scum polluting our universe? Then join the Multiversal Corps and start slaughtering zoltan children TODAY! Call us at +1(416) 999-999..." The transmission keeps going.</text>
+		<choice hidden="true">
+			<text>Look around a bit.</text>
+			<event>
+				<text>With some difficulty, you manage to locate the source of the distress signal - a large Auto-Station flanked by a small Engineer vessel. The latter ship hails you, "A Renegade? What are you doing here?"</text>
+				<choice hidden="true">
+					<text>Inquire about the distress beacon.</text>
+					<event>
+						<text>"Oh right, THAT. Long story short, some random jerkwad thought it'd be funny to hack this here news station to make it more 'politically correct'. Now it's spewing misinformation and vitriol everywhere across all broadband channels for far longer than its speakers were designed to run for. I've been trying to shut it down to stop it from overheating for a while now, but nothing seems to work. My job's supposed to be hardware, not software!"</text>
+						<choice hidden="true">
+							<text>Can we help?</text>
+							<event>
+								<text>"Sure. If you happen to have something that can purge the virus remotely, that'd be great. Otherwise, you could try and send someone inside to disable it from within. One thing though - whatever you're planning on doing, make it quick. I'd wager we have around... 30 minutes or so before the entire thing melts down."</text>
+								<choice hidden="true" req="hacking" lvl="3" blue="true">
+									<text>(Advanced Hacking) Hack the station to purge the virus.</text>
+									<event>
+										<text>Your hacking system easily bypasses the station's firewalls and swiftly purges the virus from its systems. The Engineer is thankful for your assistance and gives you a drone as thanks.</text>
+										<autoReward level="HIGH">drone</autoReward>
+									</event>
+								</choice>
+								<choice hidden="true" req="ANTI_VIRUS" blue="true">
+									<text>(Anti-Virus Module) Use your Antivirus to purge the virus.</text>
+									<event>
+										<text>You fire up the Anti-virus module and are able to remove the virus before it can cause too much damage. The Engineer thanks you and gives you a drone before leaving.</text>
+										<autoReward level="MED">drone</autoReward>
+									</event>	
+								</choice>
+								<choice hidden="true" req="human_engineer" blue="false">
+									<text>Your engineer isn't qualified enough for this.</text>
+									<event load="OPTION_INVALID"/>
+								</choice>
+								<choice>
+									<text>We have nothing to proceed with.</text>
+									<event>
+										<text>You pilot your ship away from the Auto-station as its speakers begin to go up in smoke. Within minutes, it goes up in flames and turns into a hunk of molten metal. "Welp, there goes any hope of that promotion I guess."</text>
+									</event>
+								</choice>
+							</event>
+					</event>
+				</choice>	
+			</event>
+		</choice>
 	</event>
 </FTL>

@@ -1,0 +1,97 @@
+<FTL>
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					REBEL SHIPS
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+
+    <ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
+		<destroyed>
+			<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Check in with the Duskbringers.</text>
+				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+			</choice>
+		</destroyed>
+		<deadCrew>
+			<text>The MV Rebel's crew has been neutralized, leaving their ship a lifeless wreck. You collect all that you can find.</text>
+			<autoReward level="HIGH">standard</autoReward>
+			<choice hidden="true">
+				<text>Check in with the Duskbringers.</text>
+				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+			</choice>
+		</deadCrew>
+	</ship>
+
+    <ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_ELITE_INSULT">
+		<surrender chance="0" min="2" max="2" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
+		<destroyed>
+			<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
+			<autoReward level="LOW">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+					<weapon name="GIFTLIST_REBEL"/>
+				</event>
+			</choice>
+		</destroyed>
+		<deadCrew>
+			<text>The Elite's crew has been slain, leaving their loot as yours to take. Serves them right for insulting you.</text>
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<text>It seems the Elite Rebel's cargo survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+					<weapon name="GIFTLIST_REBEL"/>
+				</event>
+			</choice>
+		</deadCrew>
+	</ship>
+
+    <ship name="SHIP_FRONTIER_ARGUMENT_ELITE" auto_blueprint="LIST_SHIPS_REBEL_ELITE_LARGE">
+        <destroyed>
+            <text>The Elite's ship crumbles to pieces, with the resolve of its comrades falling alongside it. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
+            <removeHazards/>
+            <clearTriggeredEvent/>
+            <autoReward level="MED">standard</autoReward>
+        </destroyed>
+        <deadCrew>
+            <text>The Elite's crew has been slain, and with it falls its comrades' will to fight. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
+            <removeHazards/>
+            <clearTriggeredEvent/>
+            <autoReward level="HIGH">standard</autoReward>
+        </deadCrew>
+    </ship>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					OTHER SHIPS 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+
+    <ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
+		<destroyed>
+			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
+			<autoReward level="MED">missiles</autoReward>
+			<choice hidden="true">
+				<text>Check in with the MV Rebels.</text>
+				<event load="FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			</choice>
+		</destroyed>
+		<deadCrew>
+			<text>The Duskbringer transport has been emptied of crew. Inside, you find some scrap and an Energy weapon, which you haul back to the ship in triumph.</text>
+			<autoReward level="LOW">scrap_only</autoReward>
+			<weapon name="GIFTLIST_ENERGY"/>
+			<choice hidden="true">
+				<text>Check in with the MV Rebels.</text>
+				<event load="FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+			</choice>
+		</deadCrew>
+	</ship>
+</FTL>
