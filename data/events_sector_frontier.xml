@@ -101,7 +101,7 @@
 	
 	<event name="FRONTIER_ELITE_INSULT" unique="true">
 		<ship load="SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
-		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been going crazy over? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Geeeet dunked on nerd!"</text> 
+		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been going crazy over? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Get dunked on nerd!"</text> 
 		<choice hidden="true">
 			<text>How dare you! Man the guns.</text>
 			<event>
@@ -110,12 +110,13 @@
 				<event load="COMBAT_CHECK"/>
 			</event>
 		</choice>
-		<choice hidden="true" req="WEAPON_PREIGNITE" var blue="true">
+		<choice hidden="true" req="WEAPON_PREIGNITE" blue="true">
 			<!---  preigniting augments)-->
 			<text>(Weapon Pre-igniter) Nuke them.</text>
 			<event>
-				<text>Without missing a beat, you fire a salvo directly into the Elite's shields, creating a massive explosion that sends their crew into chaos. The captain hastily apologizes and ejects a weapon out the airlock as surrender before running as far away from your ship as physically possible.</text>
-				<autoReward level="HIGH">standard_no_item</autoReward>
+				<text>Without missing a beat, you fire a salvo directly into the Elite's shields, creating a massive explosion that sends a good chunk of their ship flying into space. The captain hastily apologizes and ejects a weapon out the airlock as surrender before running as far away from your ship as physically possible.</text>
+				<enemyDamage amount="6" system="engines" effect="breach" force="true" damageHull="true"/>
+				<autoReward level="HIGH">scrap_only</autoReward>
 				<weapon name="GIFTLIST_REBEL"/>
 				<instantEscape/>
 				<event/>
@@ -223,10 +224,10 @@
 				<autoReward level="HIGH">weapon</autoReward>
 			</event>
 		</choice>
-		<choice>
-			<text>Just mute the comms and wait until he gives up.</text>
+		<choice hidden="true">
+			<text>Just grab some earplugs and hope he gives up.</text>
 			<event>
-				<text>After several minutes, the Elite realizes you aren't listening anymore and hangs up.</text>
+				<text>After rambling at you for several minutes, the Elite realizes you aren't listening anymore, throws some curse words at you, and hangs up.</text>
 				<choice>
 					<text>Do something onboard the ship.</text>
 					<event load="STORAGE_CHECK"/>
@@ -234,6 +235,14 @@
 				<choice>
 					<text>Do nothing.</text>
 					<event/>
+				</choice>
+			</event>
+			<event>
+				<text>"Hey bozo! You deaf or something? "</text>
+				<ship hostile="true"/>
+				<choice>
+					<text>Continue...</text>
+					<event load="COMBAT_CHECK"/>
 				</choice>
 			</event>
 		</choice>
@@ -269,10 +278,7 @@
 					<text>Take no chances - attack them.</text>
 					<event>
 						<text>For a group supposedly divided, the three ships are suprisingly quick to unite in the face of danger. The Elite Rebel charges forward to engage with you while the Engineer and MV Rebel provide fire support from the sidelines!</text>
-						<ship name="SHIP_FRONTIER_ELITE_ARGUMENT" hostile="true"/>
-						<triggeredEvent event="FRONTIER_ARGUMENT_SURGE" time="25" thisFight="true" loops="99999">
-							<warningMessage x="692" y="84" time="5.0" centerText="true" flash="true" sound="surgeWarning" r="255" b="0" g="0" useWarningLine="true">Fire Support Incoming!</warningMessage>
-						</triggeredEvent>
+						<ship name="SHIP_FRONTIER_ARGUMENT_ELITE" hostile="true"/>
 						<event load="COMBAT_CHECK"/>
 					</event>
 				<choice hidden="true">
@@ -300,11 +306,11 @@
 	<event name="FRONTIER_ARGUMENT_SURGE">
 		<loadEventList seeded="false">
 			<event name="FRONTIER_ARGUMENT_SURGE_DRONE" req="MARKER_FRONTIER_ARGUMENT_SURGE" lvl="0">
-				<superDrones player="false" name="DRONE_SURGE_BASIC"/>
+				<superDrones player="false" name="DRONE_SURGE_SMALL"/>
 				<hiddenAug>MARKER_FRONTIER_ARGUMENT_SURGE</hiddenAug>
 			</event>
 			<event name="FRONTIER_ARGUMENT_SURGE_LASER" req="MARKER_FRONTIER_ARGUMENT_SURGE">
-				<superBarrage player="false" name="LASER_SURGE_BASIC"/>
+				<superBarrage player="false" name="LASER_SURGE_SMALL"/>
 				<removeItem>HIDDEN MARKER_FRONTIER_ARGUMENT_SURGE</removeItem>
 			</event>
 		</loadEventList>

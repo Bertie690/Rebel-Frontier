@@ -6,23 +6,26 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 	-->
-	<shipBlueprint name="MU_REBEL_ELITE_INSULT" layout="mu_rebel_fighter" img="mu_rebel_fighter_elite">
-		<class>Best Elite Fighter Ever</class>
+	<shipBlueprint name="MU_REBEL_ELITE_INSULT" layout="mu_rebel_picket" img="mu_rebel_picket_elite">
+		<class>Elite Picket</class>
 		<systemList>
-			<engines power="1" max="2" room="5" start="true"/>
-			<medbay power="1" max="2" room="3" start="true"/>
-			<oxygen power="1" max="3" room="2" start="true"/>
-			<pilot power="1" max="3" room="0" start="true"/>
-			<shields power="4" max="8" room="6" start="true"/>
-			<teleporter power="1" max="2" room="1" start="true"/>
-			<weapons power="4" max="8" room="4" start="true"/>
+			<cloaking power="1" max="2" room="4" start="true"/>
+			<clonebay power="1" max="2" room="7" start="true"/>
+			<doors power="1" max="3" room="10" start="false"/>
+			<engines power="1" max="1" room="15" start="true"/>
+			<hacking power="1" max="3" room="9" start="false"/>
+			<oxygen power="1" max="2" room="1" start="true"/>
+			<pilot power="1" max="2" room="0" start="true"/>
+			<shields power="5" max="10" room="3" start="true"/>
+			<teleporter power="1" max="2" room="6" start="true"/>
+			<weapons power="4" max="10" room="2" start="true"/>
 		</systemList>
 		<weaponSlots>4</weaponSlots>
-		<droneSlots>2</droneSlots>
-		<weaponList missiles="12" count="4" load="LIST_WEAPONS_REBEL"/>
-		<droneList drones="0" count="2"/>
-		<health amount="15"/>
-		<maxPower amount="12"/>
+		<droneSlots>0</droneSlots>
+		<weaponList missiles="10" count="4" load="LIST_WEAPONS_REBEL"/>
+		<droneList drones="0" count="0"/>
+		<health amount="14"/>
+		<maxPower amount="16"/>
 		<boardingAI>sabotage</boardingAI>
 	</shipBlueprint>
 	

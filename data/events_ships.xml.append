@@ -54,17 +54,16 @@
 
     <ship name="SHIP_FRONTIER_ARGUMENT_ELITE" auto_blueprint="LIST_SHIPS_REBEL_ELITE_LARGE">
         <destroyed>
-            <text>The Elite's ship crumbles to pieces, with the resolve of its comrades falling alongside it. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
-            <removeHazards/>
-            <clearTriggeredEvent/>
-            <autoReward level="MED">standard</autoReward>
+            <text>The Elite's ship crumbles into pieces, with the resolve of its comrades falling alongside it. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
+            <autoReward level="MED">weapon</autoReward>
         </destroyed>
         <deadCrew>
             <text>The Elite's crew has been slain, and with it falls its comrades' will to fight. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
-            <removeHazards/>
-            <clearTriggeredEvent/>
-            <autoReward level="HIGH">standard</autoReward>
+            <autoReward level="MED">weapon</autoReward>
         </deadCrew>
+		<triggeredEvent event="FRONTIER_ARGUMENT_SURGE" time="25" thisFight="true" loops="99999">
+			<warningMessage x="692" y="84" time="5.0" centerText="true" flash="true" sound="surgeWarning" r="255" b="0" g="0" useWarningLine="true">Fire Support Incoming!</warningMessage>
+		</triggeredEvent>
     </ship>
 
 <!--
