@@ -8,6 +8,11 @@
 		<event load="FRONTIER_DOGFIGHT"/>
 		<event load="FRONTIER_ELITE_INSULT"/>
 	</eventList>
+	
+	<eventList name="DISTRESS_FRONTIER">
+		<event load="DISTRESS_FRONTIER_FAKENEWS"/>
+		
+	</eventList>
 
 	<event name="FRONTIER_DOGFIGHT" unique="true">
 		<text>You arrive at the beacon to find a Duskbringer transport sparring with an MV Rebel some distance away. If you wanted, you could try and take on one of the vessels yourself, though there's no telling what response you'd receive from the other ship afterwards.</text>
@@ -37,7 +42,7 @@
 		<choice hidden="true">
 			<text>Stay uninvolved - this isn't your fight.</text>
 			<event>
-				<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation, so you steer far away from the conflict and find a nice quiet place to charge the FTL drive.</text>
+				<text>You don't fancy getting caught in the crossfire between two warring vessels both openly hostile to the Federation. They'll sort it out eventually.</text>
 				<choice>
 					<text>Do something onboard the ship.</text>
 					<event load="STORAGE_CHECK"/>
@@ -49,7 +54,7 @@
 			</event>
 		</choice>
 	</event>
-	<event name="FRONTIER_DOGFIGHT_DUSK_CHECKIN">
+	<event name="FRONTIER_DOGFIGHT_DUSK">
 		<text>The Duskbringer transport hails you, their ship a little worse for wear but still in relatively good shape. "As much as I hate to admit it, your assistance was indeed timely. We were tasked with delivering military supplies to the Rebels, but even I was surprised at the sheer hostility of those blue bastards. Here, have some supplies - we won't be needing them anymore."</text>
 		<autoReward level="MED">missiles</autoReward>
 		<choice hidden="true">
@@ -83,14 +88,14 @@
 			</event>
 		</choice>
 	</event>
-	<eventList name="FRONTIER_DOGFIGHT_MV_CHECKIN">
+	<eventList name="FRONTIER_DOGFIGHT_MV">
 		<event>
 			<text>The MV Rebel hails you. "I don't know why on earth you decided to help us back there, and I frankly don't give a damn. That said, I suppose I can feed the fleet false information as payback - beats doing border patrol I guess." They jump away.</text>
 			<modifyPursuit amount="-2"/>
 		</event>
 		<event>
-			<text>The MV Rebel hails you. "Thanks for the assist - those Duskbringers didn't know the meaning of 'supply blockade'. Now, I know we've got our differences and all, but I'm a businessman, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
-			<autoReward level="MED">scrap_only</autoReward>
+			<text>The MV Rebel hails you. "Thanks for the assist - those Duskbringers didn't know the meaning of 'import tax'. Now, I know we've got our differences and all, but I'm a businessman, and I firmly believe that any disagreement can be solved with scrap. Have some, on the house."</text>
+			<autoReward level="LOW">scrap_only</autoReward>
 		</event>
 		<event>
 			<text>The MV Rebel makes no attempt to hail you, jumping away in a puff of smoke a short while later. You feel a sense of dread as you realize your location has likely been compromised, but at least you can salvage some debris left behind from the jump.</text>
@@ -101,13 +106,16 @@
 	
 	<event name="FRONTIER_ELITE_INSULT" unique="true">
 		<ship load="SHIP_FRONTIER_ELITE_INSULT" hostile="false"/>
-		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade Command's been going crazy over? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Get dunked on nerd!"</text> 
+		<text>The Elite Rebel at this beacon hails you as you jump in, seemingly anticipating your arrival. "So THIS is the Renegade command's been going crazy over? HA! Given the size of the bounty on your head, I'd have thought you'd be piloting something a bit bigger, not this tiny little shrimp! Get dunked on nerd!"</text> 
 		<choice hidden="true">
 			<text>How dare you! Man the guns.</text>
 			<event>
-				<text>The Rebel captain smirks at you, their weapons system coming to life with an audible hum. "Ah Renegades, foolhardy as always. Prepare to be crushed, squirt."</text>
+				<text>The Rebel captain smirks at you, their weapons system coming to life with an audible hum. "Ah, Renegades. Foolhardy as always. Prepare to be crushed, squirt."</text>
 				<ship hostile="true"/>
-				<event load="COMBAT_CHECK"/>
+				<choice hidden="true">
+					<text>Continue...</text>
+					<event load="COMBAT_CHECK"/>
+				</choice>
 			</event>
 		</choice>
 		<choice hidden="true" req="WEAPON_PREIGNITE" blue="true">
@@ -220,7 +228,7 @@
 			<event>
 				<text>Upon hearing Jerry speak, the captain's disposition changes to one of surprise and adoration. "Wait.. you have JERRY on your ship? I take everything back - I'm a huge fan!"
 				
-				After getting a signed photo of Jerome Wentworth himself, the Elite gives you a weapon and some scrap before heading out.</text>
+				After getting a signed photo of 'Jerome Wentworth himself', the Elite gives you a weapon and some scrap before heading out.</text>
 				<autoReward level="HIGH">weapon</autoReward>
 			</event>
 		</choice>
@@ -237,35 +245,15 @@
 					<event/>
 				</choice>
 			</event>
-			<event>
-				<text>"Hey bozo! You deaf or something? "</text>
-				<ship hostile="true"/>
-				<choice>
-					<text>Continue...</text>
-					<event load="COMBAT_CHECK"/>
-				</choice>
-			</event>
-		</choice>
-	</event>
-	<event name="SURRENDER_FRONTIER_ELITE_INSULT">
-		<text>You receive a hail from the Elite's captain, having clearly undererestimated your ship's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
-		<choice>
-			<text>Accept their surrender.</text>
-			<weapon name="GIFTLIST_REBEL"/>
-			<ship hostile="false"/>
-		</choice>
-		<choice>
-			<text>Ignore them and continue fighting.</text>
-			<event/>
 		</choice>
 	</event>
 	
 	<event name="FRONTIER_REBEL_ARGUMENT" unique="true">
 		<text>Immediately upon jumping into the beacon, your comms light up with an argument being held over an open channel. After a brief search, you find the source to be three Rebel ships parked in a circle: A local Rebel Elite, an Engineer, and an MV Rebel.</text>
-		<choice>
+		<choice hidden="true">
 			<text>Tune in.</text>
 			<event>
-				<text>From what you can gather between the expletives, slurs, and ad hominem statements about certain parties' mothers, the three ships appear to be locked in a heated debate about which corps is the most vital to the Rebellion.</text>
+				<text>From what you can gather between the expletives, slurs, and ad hominem statements about certain parties' mothers, the three ships appear to be locked in a heated debate about which corps is the most vital to the Rebellion.
 				
 				"The Rebellion was built on the backs of us Elites! We're the ones who lead the charge, who make up almost the entirety of the Rebel Fleet to begin with! If it weren't for us, the Rebellion would've lost aeons ago!"
 				
@@ -279,12 +267,15 @@
 					<event>
 						<text>For a group supposedly divided, the three ships are suprisingly quick to unite in the face of danger. The Elite Rebel charges forward to engage with you while the Engineer and MV Rebel provide fire support from the sidelines!</text>
 						<ship name="SHIP_FRONTIER_ARGUMENT_ELITE" hostile="true"/>
-						<event load="COMBAT_CHECK"/>
+						<choice hidden="true">
+							<text>Continue...</text>
+							<event load="COMBAT_CHECK"/>
+						</choice>
 					</event>
+				</choice>
 				<choice hidden="true">
 					<text>Hold off - something's up.</text>
 					<event load="FRONTIER_REBEL_ARGUMENT_2"/>
-				</choice>
 				</choice>
 			</event>
 		</choice>
@@ -315,14 +306,7 @@
 			</event>
 		</loadEventList>
 	</event>
-	<surgeDrones name="DRONE_SURGE_BASIC">
-		<drone name="COMBAT_1_LASER" count="1"/>
-		<drone name="FLAK_1_AMP3" count="1"/>
-		<drone name="COMBAT_1_BEAM" count="1"/>
-	</surgeDrones>
-	<surgeBarrage name="LASER_SURGE_BASIC">
-		<weapon name="BARRAGE_LASER" count="3"/>
-	</surgeBarrage>
+	
 	<event name="FRONTIER_REBEL_ARGUMENT_2">
 		<text>After a moment of tense silence, the Engineer speaks up. "Hey, wait a second. If you're a Fed, that means you've probably fought some Rebels before, right? Maybe you can help us settle our little dilemma." 
 			
@@ -373,6 +357,17 @@
 				<autoReward level="HIGH">scrap_only</autoReward>
 			</event>
 		</choice>
+		<choice hidden="true" req="LIST_CREW_LEGION" blue="true">
+			<text>(Legionnaire Crew) The Legionnaires.</text>
+			<event>
+				<text>"What's a legionnaire? Never heard of them before." 
+					
+					"Top secret. That's all anyone's allowed to know before I have to... take action."
+					
+					All three captains seem thoroughly intimidated by your Legionnaire's thinly veiled threat. They apologize and offer a weapon as tribute, then leave without another word.</text>
+				<autoReward level="HIGH">weapon</autoReward>
+			</event>
+		</choice>
 		<choice hidden="true" req="LIST_CREW_JERRY" blue="true">
 			<text>(Jerry) "All of you!"</text>
 			<event>
@@ -382,7 +377,7 @@
 				
 				"Well said. To think we wasted several system hours bickering when the answer to our problem was so simple after all..."
 				
-				"Guys, I'm sorry for being a bit stubborn and saying things about your mothers."
+				"Guys, I'm sorry for being a bit stubborn and saying rude things about your mothers."
 				
 				"It's fine."
 				
@@ -413,24 +408,24 @@
 		<choice hidden="true">
 			<text>It's a glorious cause that will bring order and stability to the multiverse.</text>
 			<event>
-				<text>"Please. Do you really think I'm stupid enough to believe that's your honest answer? I think you're just lying to me hoping that I'll give you stuff. In that case, I see no need to prolong this conversation further." He cuts comms.</text>
+				<text>"Please. Do you really think I'm stupid enough to believe that's your honest answer? If you're willing to lie to my face, I see no need to prolong this conversation any further." He cuts comms.</text>
 			</event>
 		</choice>
 		<choice hidden="true">
-			<text>It has potential, but was led astray by immoral methods.</text>
+			<text>It has potential, but was led astray by upper management.</text>
 			<event>
-				<text>"Finally, someone who understands me!" The rebel smiles before sighing despondently. "I joined the Rebellion because I thought it was a heroic organization aiming to 'shape the galaxy for the better'. Turns out it's far less noble than the commercials made it out to be. No care or respect for basic rights, constant infighting between different corps, the entirety of upper management being completely useless... you get the idea. At this point, I've got half a mind to quit and find work at a factory somewhere, but the rest of my family needs the money..."</text>
+				<text>"Finally, someone who understands me!" The rebel smiles before sighing despondently. "I joined the Rebellion because I wanted to make a change, to 'help those that can't help themselves'. Turns out it's far less noble than the commercials made it out to be. Dismal pay and working conditions, constant infighting between the different corps, the entirety of upper management being completely useless... you get the idea. At this point, I've got half a mind to quit and find work at a factory somewhere - anything would be better than this..."</text>
 				<choice>
 					<text>Why not join our ship? The pay's good, and we even get free healthcare insurance.</text>
 					<event>
 						<text>"Sure, I guess. At least I won't have to listen to my commander bark orders at me anymore."</text>
-						<crewMember class="human_soldier">Fred</crewMember>
+						<crewMember class="human_soldier" all_skills="1">Myles</crewMember>
 					</event>
 				</choice>
 				<choice>
-					<text>What about forming a reform club? Try and spark change from within?</text>
+					<text>Why not try and form a worker's union?</text>
 					<event>
-						<text>"That's an idea. Never thought I'd be taking advice from a Fed, but I'm desperate enough to try anything at this point." The rebel gives you some scrap as thanks before heading out.</text>
+						<text>"That's an idea. Never thought I'd be taking advice from a Fed, but I guess it's worth a shot." The rebel gives you some scrap as thanks for listening to him before heading out.</text>
 						<autoReward level="MED">scrap-only</autoReward>
 					</event>
 				</choice>
@@ -438,48 +433,121 @@
 		</choice> 
 	</event>
 
-	<event name="DISTRESS_FRONTIER_FAKE_NEWS" distress="true" unique="true">
-		<text>Instead of a distress signal, your comms are flooded with a barrage of ads encouraging enlistment in the MV Rebels. "Th-he Federation is a bunch of liver-eating sheep-brained cannon fodder! Aliens are scientifically less good than humans! Are YOU a Rebel tired of all the dumb, lazy xeno scum polluting our universe? Then join the Multiversal Corps and start slaughtering zoltan children TODAY! Call us at +1(416) 999-999..." The transmission keeps going.</text>
+	<event name="DISTRESS_FRONTIER_FAKENEWS" distress="true" unique="true">
+		<text>Instead of a distress signal, your comms are flooded with a barrage of ads coming from seemingly nowhere. "Th-he Federation is a bunch of sheep-brained idiots! Aliens have been scientifically proven to be worse than humans! Are YOU a Rebel tired of all the Feds and xeno scum polluting our universe? Then join the Multiversal Corps and start slaughtering Zoltan children TODAY! Call us now at +1(416) 999-999..." The message continues on for quite some time before turning off, though the source of the distress signal is still nowhere to be seen.</text>
 		<choice hidden="true">
 			<text>Look around a bit.</text>
 			<event>
-				<text>With some difficulty, you manage to locate the source of the distress signal - a large Auto-Station flanked by a small Engineer vessel. The latter ship hails you, "A Renegade? What are you doing here?"</text>
+				<text>After some searching, you manage to locate the source of both the transmission and the distress signal - a large Auto-Station and a small Engineer vessel, respectively. The Engineer hails you, "Look, I know our two factions aren't exactly on the friendliest of terms, but I think the two of us could reach a mutually beneficial agreement. You see, this station was hijacked by some U1 blockheads to spew propaganda everywhere. It's been messing with the planetary comms networks down below for a while now, so they sent me to try and fix it. Only problem is, I have no idea how to deal with it. I'll pay you if you can help do it for me."</text>
+				<ship name="SHIP_FRONTIER_FAKENEWS" hostile="false"/>
+				<img planet="PLANET_POPULATED_4"/>
 				<choice hidden="true">
-					<text>Inquire about the distress beacon.</text>
+					<text>Agree to help fix the Auto.</text>
 					<event>
-						<text>"Oh right, THAT. Long story short, some random jerkwad thought it'd be funny to hack this here news station to make it more 'politically correct'. Now it's spewing misinformation and vitriol everywhere across all broadband channels for far longer than its speakers were designed to run for. I've been trying to shut it down to stop it from overheating for a while now, but nothing seems to work. My job's supposed to be hardware, not software!"</text>
-						<choice hidden="true">
-							<text>Can we help?</text>
+						<text>"Great. Just don't blow it up - my paycheck depends on this."</text>
+						<choice hidden="true" req="ANTI_VIRUS" blue="true">
+							<text>(Anti-Virus Module) Use your Anti-Virus module to purge the virus.</text>
 							<event>
-								<text>"Sure. If you happen to have something that can purge the virus remotely, that'd be great. Otherwise, you could try and send someone inside to disable it from within. One thing though - whatever you're planning on doing, make it quick. I'd wager we have around... 30 minutes or so before the entire thing melts down."</text>
-								<choice hidden="true" req="hacking" lvl="3" blue="true">
-									<text>(Advanced Hacking) Hack the station to purge the virus.</text>
-									<event>
-										<text>Your hacking system easily bypasses the station's firewalls and swiftly purges the virus from its systems. The Engineer is thankful for your assistance and gives you a drone as thanks.</text>
-										<autoReward level="HIGH">drone</autoReward>
-									</event>
-								</choice>
-								<choice hidden="true" req="ANTI_VIRUS" blue="true">
-									<text>(Anti-Virus Module) Use your Antivirus to purge the virus.</text>
-									<event>
-										<text>You fire up the Anti-virus module and are able to remove the virus before it can cause too much damage. The Engineer thanks you and gives you a drone before leaving.</text>
-										<autoReward level="MED">drone</autoReward>
-									</event>	
-								</choice>
-								<choice hidden="true" req="human_engineer" blue="false">
-									<text>Your engineer isn't qualified enough for this.</text>
-									<event load="OPTION_INVALID"/>
-								</choice>
-								<choice>
-									<text>We have nothing to proceed with.</text>
-									<event>
-										<text>You pilot your ship away from the Auto-station as its speakers begin to go up in smoke. Within minutes, it goes up in flames and turns into a hunk of molten metal. "Welp, there goes any hope of that promotion I guess."</text>
-									</event>
+								<text>You fire up the Anti-Virus and are able to remotely counter the station's virus in no time at all. The Engineer thanks you and gives you a drone before leaving.</text>
+								<autoReward level="HIGH">drone</autoReward>
+							</event>	
+						</choice>
+						<choice hidden="true" req="hacking" lvl="3" blue="true">
+							<text>(Adv. Hacking) Hack the station to purge the virus.</text>
+							<event>
+								<text>Your advanced hacking system easily bypasses the station's firewalls and swiftly purges the virus from its systems. The Engineer thanks you for your assistance and gives you a drone as payment.</text>
+								<autoReward level="HIGH">drone</autoReward>
+							</event>
+						</choice>
+						<choice hidden="true" req="hacking" lvl="2" max_lvl="2" blue="true">
+							<text>(Upg. Hacking) Hack the station to purge the virus.</text>
+							<event>
+								<text>With some difficulty, you manage to bypass the station's firewalls and clear the virus from its systems. The Engineer thanks you for your assistance and pays you all the same.</text>
+								<autoReward level="MED">drone</autoReward>
+							</event>
+							<event>
+								<text>The station's security measures are significantly more robust than you anticipated, and it takes a while for you to break through and delete the virus. Despite your sloppy performance, the Engineer thanks you for your assistance and provides payment, though you suspect the fleet would have gained a significant advantage over you by now.</text>
+								<autoReward level="MED">drone</autoReward>
+								<modifyPursuit amount="1"/>
+							</event>
+						</choice>
+						<choice hidden="true" req="hacking" lvl="1" max_lvl="1" blue="true">
+							<text>(Hacking) Hack the station to purge the virus.</text>
+							<event>
+								<text>The bulk of the station's defenses are far too advanced for your weak hacking system, though you are able to change the message to something slightly less annoying. The Engineer is somewhat disappointed at your failure, but gives you a small reward for trying.</text>
+								<autoReward level="MED">standadrd</autoReward>
+							</event>
+						<choice hidden="true" req="LIST_CREW_ENGINEER" blue="true">
+							<text>(Engineer Crew) Have your Engineer try and fix the Auto.</text>
+							<event>
+								<text>Your Engineer, no stranger to dealing with broken Auto-ships, reformats the Auto's hard drive and reinstalls its operating system to restore full functionality. The Engineer seems impressed and gives you a drone as payment for a job well done.</text>
+								<autoReward level="MED">drone</autoReward>
+							</event>
+						</choice>
+						<choice hidden="true" req="LIST_CREW_ENGI" blue="true">
+							<text>(Engi Crew) Have your Engi try and fix the Auto.</text>
+							<event>
+								<text>Your Engi, despite being unfamiliar with Rebel Auto-ship design, is still able to restore partial functionality to the station. Though it's only a temporary fix, the Engineer thanks you and pays you all the same.</text>
+								<autoReward level="HIGH">standard</autoReward>
+							</event>
+						</choice>
+						<choice hidden="true">
+							<text>Just blow it up.</text>
+							<event>
+								<text>You approach the station with weapons raised, their offensive systems still fully functional despite the hack.</text>
+								<ship hostile="true"/>
+								<choice hidden="true">
+									<text>Continue...</text>
+									<event load="COMBAT_CHECK"/>
 								</choice>
 							</event>
+						</choice>
+						<choice hidden="true">
+							<text>Apologize and say there's nothing you can do.</text>
+							<event>
+								<text>"Oh well. I hope command sends someone else to help soon..."</text>
+								<choice>
+									<text>Do something onboard the ship.</text>
+									<event load="STORAGE_CHECK"/>
+								</choice>
+								<choice>
+									<text>Do nothing.</text>
+									<event/>
+								</choice>
+							</event>
+						</choice>
 					</event>
-				</choice>	
+				</choice>
+				<choice>
+					<text>No thanks.</text>
+					<event>
+						<text>You aren't going to do some Engineer's laundry for them. You end the call and steer away from the malfunctioning Auto.</text>
+						<choice>
+							<text>Do something onboard the ship.</text>
+							<event load="STORAGE_CHECK"/>
+						</choice>
+						<choice>
+							<text>Do nothing.</text>
+							<event/>
+						</choice>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice>
+			<text>Ignore it and carry on.</text>
+			<event>
+				<text>You can't afford to go on a wild goose chase for every unknown signal you find.</text>
+				<choice>
+					<text>Do something onboard the ship.</text>
+					<event load="STORAGE_CHECK"/>
+				</choice>
+				<choice>
+					<text>Do nothing.</text>
+					<event/>
+				</choice>
 			</event>
 		</choice>
 	</event>
+	
 </FTL>

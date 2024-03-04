@@ -25,7 +25,7 @@ Event list:
 * ~~Disillusioned veteran~~ DONE
 * ~~Engineer, MV, and Elite Rebel ships arguing~~ DONE
 * MFK Ace recruitment center 
-* *DISTRESS - Engineer dealing with propaganda satellite* WIP
+* ~~DISTRESS - Engineer dealing with propaganda satellite~~ DONE
 
 ### Major Events/Quests
 

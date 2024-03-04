@@ -7,13 +7,13 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 
-    <ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE">
+    <ship name="SHIP_FRONTIER_DOGFIGHT_MV" auto_blueprint="LIST_SHIPS_MULTIVERSE" unused="true">
 		<destroyed>
 			<text>The MV Rebel explodes into an assortment of scrap matter and other useful materials.</text>
 			<autoReward level="MED">standard</autoReward>
 			<choice hidden="true">
 				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+				<event load="FRONTIER_DOGFIGHT_DUSK"/>
 			</choice>
 		</destroyed>
 		<deadCrew>
@@ -21,13 +21,24 @@
 			<autoReward level="HIGH">standard</autoReward>
 			<choice hidden="true">
 				<text>Check in with the Duskbringers.</text>
-				<event load="FRONTIER_DOGFIGHT_DUSK_CHECKIN"/>
+				<event load="FRONTIER_DOGFIGHT_DUSK"/>
 			</choice>
 		</deadCrew>
 	</ship>
 
-    <ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_ELITE_INSULT">
-		<surrender chance="0" min="2" max="2" load="SURRENDER_FRONTIER_ELITE_INSULT"/>
+    <ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_PICKET_ELITE" unused="true">
+		<surrender chance="0" min="4" max="4">
+			<text>You receive a hail from the Elite's captain, having clearly undererestimated your ship's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
+			<choice>
+				<text>Accept their surrender.</text>
+				<weapon name="GIFTLIST_REBEL"/>
+				<ship hostile="false"/>
+			</choice>
+			<choice>
+				<text>Ignore them and continue fighting.</text>
+				<event/>
+			</choice>
+		</surrender>
 		<destroyed>
 			<text>You've defeated the Rebel Elite. Serves them right for insulting you.</text>
 			<autoReward level="LOW">standard</autoReward>
@@ -52,7 +63,7 @@
 		</deadCrew>
 	</ship>
 
-    <ship name="SHIP_FRONTIER_ARGUMENT_ELITE" auto_blueprint="LIST_SHIPS_REBEL_ELITE_LARGE">
+    <ship name="SHIP_FRONTIER_ARGUMENT_ELITE" auto_blueprint="LIST_SHIPS_REBEL_ELITE_LARGE" unused="true">
         <destroyed>
             <text>The Elite's ship crumbles into pieces, with the resolve of its comrades falling alongside it. The two ships soon jump away, but not before swearing vengeance for their fallen friend. Seems all they needed was a common enemy, huh?</text>
             <autoReward level="MED">weapon</autoReward>
@@ -66,6 +77,14 @@
 		</triggeredEvent>
     </ship>
 
+	<ship name="SHIP_FRONTIER_FAKENEWS" auto_blueprint="MU_AUTO_STATION" unused="true">
+		<destroyed>
+			<text>The Auto-station has been reduced to a smouldering wreck. The Engineer hails you. "What part of 'don't blow it up' did you not understand? Mark my words, I'll make sure everyone hears about this little 'incident'!" The ship jumps away.</text>
+			<autoReward level="MED">standard</autoReward>
+			<modifyPursuit amount="1"/>
+		</destroyed>
+	</ship>		
+
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -74,13 +93,13 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 
-    <ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT">
+    <ship name="SHIP_FRONTIER_DOGFIGHT_DUSK" auto_blueprint="MU_DUSK_TRANSPORT" unused="true">
 		<destroyed>
 			<text>The Duskbringer transport explodes violently, whatever goods the ship contained having surely been destroyed. However, you manage to salvage a good amount of scrap and functional ammunition from the wreckage.</text>
 			<autoReward level="MED">missiles</autoReward>
 			<choice hidden="true">
 				<text>Check in with the MV Rebels.</text>
-				<event load="FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+				<event load="FRONTIER_DOGFIGHT_MV"/>
 			</choice>
 		</destroyed>
 		<deadCrew>
@@ -89,7 +108,7 @@
 			<weapon name="GIFTLIST_ENERGY"/>
 			<choice hidden="true">
 				<text>Check in with the MV Rebels.</text>
-				<event load="FRONTIER_DOGFIGHT_MV_CHECKIN"/>
+				<event load="FRONTIER_DOGFIGHT_MV"/>
 			</choice>
 		</deadCrew>
 	</ship>

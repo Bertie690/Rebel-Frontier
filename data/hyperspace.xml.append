@@ -15,4 +15,15 @@
 		</mod-append:customShip>
 	</mod:findLike>
 	
+	<mod:findLike type="boss">
+		<mod-append:surgeDrones name="DRONE_SURGE_SMALL">
+			<drone name="COMBAT_1_LASER" count="1"/>
+			<drone name="FLAK_1_AMP3" count="1"/>
+			<drone name="COMBAT_1_BEAM" count="1"/>
+		</mod-append:surgeDrones>
+		
+		<mod-append:surgeBarrage name="LASER_SURGE_BASIC">
+			<weapon name="BARRAGE_LASER" count="3"/>
+		</mod-append:surgeBarrage>
+	</mod:findLike>
 </FTL>
