@@ -1,17 +1,29 @@
 <FTL>
-    <mod:findLike type="events">
-       <mod-append:eventFile>sector_frontier</mod-append:eventFile>
-    </mod:findLike>
-    <mod:findLike type="ship">
-        <mod-append:customShip name="MU_REBEL_ELITE_INSULT">
-        <crew>
-            <human_soldier room="0" name="Matt"/>
-            <human_soldier room="1"/>
-            <human_soldier room="1"/>
-            <human_soldier room="4"/>
-            <human_engineer room="5"/>
-            <human_medic room="6"/>
-        </crew>
-    </mod-append:customShip>
-</mod:findLike>
+	<mod:findLike type="events">
+	   <mod-append:eventFile>sector_frontier</mod-append:eventFile>
+	</mod:findLike>
+	<mod:findLike type="ship">
+		<mod-append:customShip name="MU_REBEL_ELITE_INSULT">
+			<crew>
+				<human_soldier room="0" name="Matt"/>
+				<human_soldier room="7"/>
+				<human_soldier room="7"/>
+				<human_soldier room="2"/>
+				<human_engineer room="9"/>
+				<human_medic room="10"/>
+			</crew>
+		</mod-append:customShip>
+	</mod:findLike>
+	
+	<mod:findLike type="boss">
+		<mod-append:surgeDrones name="DRONE_SURGE_SMALL">
+			<drone name="COMBAT_1_LASER" count="1"/>
+			<drone name="FLAK_1_AMP3" count="1"/>
+			<drone name="COMBAT_1_BEAM" count="1"/>
+		</mod-append:surgeDrones>
+		
+		<mod-append:surgeBarrage name="LASER_SURGE_BASIC">
+			<weapon name="BARRAGE_LASER" count="3"/>
+		</mod-append:surgeBarrage>
+	</mod:findLike>
 </FTL>
