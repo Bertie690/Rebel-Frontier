@@ -26,13 +26,15 @@
 		</deadCrew>
 	</ship>
 
-    <ship name="SHIP_FRONTIER_ELITE_INSULT" autoBlueprint="MU_REBEL_PICKET_ELITE" unused="true">
-		<surrender chance="0" min="4" max="4">
+    <ship name="SHIP_FRONTIER_ELITE_INSULT" auto_blueprint="LIST_SHIPS_REBEL_ELITE_FIGHT" unused="true">
+		<surrender min="4" max="4">
 			<text>You receive a hail from the Elite's captain, having clearly undererestimated your ship's strength. "Alright alright, you've made your point already! Just take this weapon and leave us alone!"</text>
 			<choice>
 				<text>Accept their surrender.</text>
-				<weapon name="GIFTLIST_REBEL"/>
-				<ship hostile="false"/>
+				<event>
+					<weapon name="GIFTLIST_REBEL"/>
+					<ship hostile="false"/>
+				</event>
 			</choice>
 			<choice>
 				<text>Ignore them and continue fighting.</text>

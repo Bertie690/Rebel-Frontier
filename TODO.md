@@ -18,14 +18,14 @@ Event list:
 * Jerry Fan Club 
 * ~~Insulting Elite~~ DONE
 * ~~Duskbringer transport fighting with MV Rebel~~ DONE 
-* Leah mirror match slap fight (basically empty beacon)
+* Leah mirror match slap fight (psuedo-empty beacon)
 
 ### Medium Events
 
 * ~~Disillusioned veteran~~ DONE
 * ~~Engineer, MV, and Elite Rebel ships arguing~~ DONE
 * MFK Ace recruitment center 
-* ~~DISTRESS - Engineer dealing with propaganda satellite~~ DONE
+* ~~DISTRESS - Engineer dealing with propaganda satellite~~ DONE (needs bugfixing)
 
 ### Major Events/Quests
 
